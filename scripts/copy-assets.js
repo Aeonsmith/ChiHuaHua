@@ -14,3 +14,12 @@ fs.mkdirSync(destDir, { recursive: true });
     console.log(`Copied ${file} -> dist/desktop/renderer/`);
   }
 });
+
+// Sanitize app.js in dist to remove CommonJS exports line for browser script tag
+const appJsPath = path.join(destDir, 'app.js');
+if (fs.existsSync(appJsPath)) {
+  let content = fs.readFileSync(appJsPath, 'utf8');
+  content = content.replace(/Object\.defineProperty\(exports,\s*"__esModule",\s*\{\s*value:\s*true\s*\}\);?/g, '');
+  fs.writeFileSync(appJsPath, content, 'utf8');
+  console.log('Sanitized dist/desktop/renderer/app.js for browser runtime');
+}
