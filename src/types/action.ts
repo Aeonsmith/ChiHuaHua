@@ -3,6 +3,7 @@ import { TapeScenario } from './tape';
 
 export type GameAction =
   | { type: 'TICK'; deltaSeconds: number; currentEpochMs: number }
+  | { type: 'SET_PLAYER_ALIAS'; alias: string }
   | { type: 'RECRUIT_WORKER'; role: WorkerRole; codename: string; tier?: number }
   | { type: 'ASSIGN_WORKER'; workerId: string; nodeId: string | null }
   | { type: 'RETIRE_WORKER'; workerId: string }

@@ -13,15 +13,26 @@ describe('UI Dashboard - End-to-End Integration', () => {
 
     // Initial render verification
     let renderOutput = dashboard.render();
-    assert.ok(renderOutput.includes('OPERATOR_0'));
-    assert.ok(renderOutput.includes('No active operatives recruited'));
+    assert.ok(renderOutput.includes('JACK'));
+    assert.ok(renderOutput.includes('THOMAS'));
+    assert.ok(renderOutput.includes('JONAS'));
     assert.ok(renderOutput.includes('No tapes currently leased'));
+
+    // Test "Promote Thomas"
+    dashboard.handleCommand('PROMOTE THOMAS');
+    let state = engine.getState();
+    assert.equal(state.workers['worker_thomas'].tier, 2);
+
+    // Test "Fire Jonas"
+    dashboard.handleCommand('FIRE JONAS');
+    state = engine.getState();
+    assert.equal(state.workers['worker_jonas'], undefined);
 
     // Command 1: Recruit Benjamin
     dashboard.handleCommand('1');
-    let state = engine.getState();
+    state = engine.getState();
     const benjamins = Object.values(state.workers).filter(w => w.role === WorkerRole.BENJAMIN);
-    assert.equal(benjamins.length, 1);
+    assert.equal(benjamins.length, 2); // Thomas + new Benjamin
     assert.equal(benjamins[0].assignedNodeId, 'node_broadcasting_hub');
 
     renderOutput = dashboard.render();

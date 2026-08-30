@@ -91,7 +91,7 @@ export class TerminalRenderer {
     lines.push(`${primary}${this.BOLD}================================================================================${this.RESET}`);
     lines.push(
       this.applyGlitch(
-        `${primary}${this.BOLD}   █▀▀█ █   █▀▀█ █▀▀ █ █ █▀▀▄ █  █ █▀▀ ▀▀█▀▀ █▀▀ █▀▀█  :: UNDERGROUND v0.1.0${this.RESET}`,
+        `${primary}${this.BOLD}   █▀▀█ █   █▀▀█ █▀▀ █ █ █▀▀▄ █  █ █▀▀ ▀▀█▀▀ █▀▀ █▀▀█  :: UNDERGROUND v2.0.2000${this.RESET}`,
         distortion
       )
     );

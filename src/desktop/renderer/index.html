@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BLOCKBUSTER: UNDERGROUND - Retro Analog Cockpit</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- CRT Scanline & Phosphor Overlay -->
+  <div class="crt-overlay"></div>
+  <div class="crt-flicker"></div>
+  <canvas id="glitch-canvas"></canvas>
+
+  <div class="cockpit-container">
+    <!-- Header Bar -->
+    <header class="terminal-header">
+      <div class="brand">
+        <span class="logo-text">BLOCKBUSTER // UNDERGROUND</span>
+        <span class="version-tag">EDITION v2.0.2000 (Y2K)</span>
+      </div>
+      <div class="system-pills">
+        <div class="pill operator-pill">OP: <strong id="val-operator">JACK</strong></div>
+        <div class="pill tor-pill">TOR ONION: <span id="val-tor-status" class="status-badge">DISCONNECTED</span> <span id="val-tor-latency" class="latency-badge">--ms</span></div>
+        <div class="pill tick-pill">TICK: #<span id="val-ticks">0</span></div>
+      </div>
+    </header>
+
+    <!-- Raid Banner -->
+    <div id="raid-banner" class="raid-alert hidden">
+      <div class="raid-content">
+        <span class="raid-icon">⚠️</span>
+        <span class="raid-text">CRITICAL ALERT: POLICE RAID ACTIVE! SURVEILLANCE BREACHED!</span>
+        <button id="btn-resolve-raid" class="btn btn-danger">PAY BRIBES ($200.00)</button>
+      </div>
+    </div>
+
+    <!-- Main Dashboard Grid -->
+    <div class="dashboard-grid">
+      <!-- Column 1: Financial & Psychological Gauges & Operatives -->
+      <section class="panel panel-left">
+        <div class="panel-header">FINANCIAL & MENTAL LEDGER</div>
+        <div class="gauge-card">
+          <div class="gauge-row">
+            <span class="gauge-label">CAPITAL / CASH</span>
+            <span id="val-cash" class="gauge-val cash-val">$500.00</span>
+          </div>
+          <div class="gauge-row">
+            <span class="gauge-label">SANITY / CLARITY</span>
+            <div class="meter-bar"><div id="meter-sanity" class="meter-fill sanity-fill" style="width: 100%;"></div></div>
+            <span id="val-sanity" class="gauge-pct">100%</span>
+          </div>
+          <div class="gauge-row">
+            <span class="gauge-label">LEGAL HEAT</span>
+            <div class="meter-bar"><div id="meter-heat" class="meter-fill heat-fill" style="width: 10%;"></div></div>
+            <span id="val-heat" class="gauge-pct">10.0%</span>
+          </div>
+          <div class="gauge-row">
+            <span class="gauge-label">CRT DISTORTION</span>
+            <div class="meter-bar"><div id="meter-distortion" class="meter-fill distortion-fill" style="width: 3%;"></div></div>
+            <span id="val-distortion" class="gauge-pct">3.0%</span>
+          </div>
+        </div>
+
+        <div class="panel-header section-mt">ACTIVE OPERATIVES (BENJAMINS & ELIASES)</div>
+        <div class="operatives-toolbar">
+          <button id="btn-recruit-benjamin" class="btn btn-primary">+ Recruit Benjamin ($50/m)</button>
+          <button id="btn-recruit-elias" class="btn btn-secondary">+ Recruit Elias ($35/m)</button>
+        </div>
+        <div id="operatives-list" class="operatives-container">
+          <div class="empty-state">No active operatives deployed.</div>
+        </div>
+
+        <div class="panel-header section-mt">REAL ESTATE & SURVEILLANCE HUBS</div>
+        <div id="nodes-list" class="nodes-container"></div>
+      </section>
+
+      <!-- Column 2: Analog VHS Vault & Forensics Scrubbing -->
+      <section class="panel panel-center">
+        <div class="panel-header">ANALOG TAPE VAULT & ACTIVE LEASES</div>
+        <div id="tape-catalog" class="tape-catalog-grid"></div>
+
+        <div class="panel-header section-mt">ACTIVE FORENSICS SCRUBBING DECK</div>
+        <div id="active-rentals-list" class="rentals-container">
+          <div class="empty-state">No tapes currently loaded into forensics deck.</div>
+        </div>
+
+        <div class="panel-header section-mt">DECRYPTED NARRATIVE INTEL</div>
+        <div id="intel-clues-list" class="intel-box">
+          <div class="empty-state">No classified intelligence extracted yet.</div>
+        </div>
+      </section>
+
+      <!-- Column 3: Tactical Actions & Live System Telemetry -->
+      <section class="panel panel-right">
+        <div class="panel-header">TACTICAL SYSTEM ACTIONS</div>
+        <div class="actions-stack">
+          <button id="btn-restore-sanity" class="btn btn-tactical">🛡️ Restore Sanity Clarity ($100)</button>
+          <button id="btn-ping-tor" class="btn btn-tactical">🧅 Ping Tor Onion Circuit</button>
+        </div>
+
+        <div class="panel-header section-mt">SYSTEM TELEMETRY LOGS</div>
+        <div id="console-logs" class="terminal-log-box"></div>
+      </section>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>

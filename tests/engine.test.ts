@@ -347,8 +347,8 @@ describe('GameEngine Integration', () => {
     });
 
     const state = engine.getState();
-    const workers = Object.values(state.workers);
-    assert.equal(workers.length, 1);
-    assert.equal(workers[0].codename, 'DIRECTRECRUIT');
+    const recruited = Object.values(state.workers).find(w => w.codename === 'DIRECTRECRUIT');
+    assert.ok(recruited);
+    assert.equal(recruited.role, WorkerRole.BENJAMIN);
   });
 });

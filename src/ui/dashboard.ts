@@ -87,6 +87,18 @@ export class TerminalDashboard {
     const state = this.engine.getState();
 
     switch (cmd) {
+      case 'PROMOTE_THOMAS':
+      case 'PROMOTE THOMAS': {
+        this.engine.dispatch({ type: 'UPGRADE_WORKER', workerId: 'worker_thomas' });
+        break;
+      }
+
+      case 'FIRE_JONAS':
+      case 'FIRE JONAS': {
+        this.engine.dispatch({ type: 'RETIRE_WORKER', workerId: 'worker_jonas' });
+        break;
+      }
+
       case '1': {
         const id = `BENJAMIN_${Date.now().toString().slice(-4)}`;
         this.engine.dispatch({

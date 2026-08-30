@@ -19,13 +19,42 @@ export class GameEngine {
 
     this.state = options?.initialState || {
       player: {
-        alias: 'OPERATOR_0',
+        alias: 'JACK',
         cashCents: 50000, // $500.00 initial capital
         sanity: 1.0,      // 100% clarity
         heat: 10.0,       // 10% base heat
         distortionIndex: 0.03
       },
-      workers: {},
+      workers: {
+        worker_thomas: {
+          id: 'worker_thomas',
+          codename: 'THOMAS',
+          role: 'BENJAMIN' as any,
+          status: 'ACTIVE' as any,
+          tier: 1,
+          salaryPerMinuteCents: 5000,
+          efficiency: 2.0,
+          heatGeneratedPerMin: 2.5,
+          heatDissipationPerMin: 0.0,
+          sanityDrainRate: -0.005,
+          durability: 1.0,
+          assignedNodeId: 'node_broadcasting_hub'
+        },
+        worker_jonas: {
+          id: 'worker_jonas',
+          codename: 'JONAS',
+          role: 'ELIAS' as any,
+          status: 'ACTIVE' as any,
+          tier: 1,
+          salaryPerMinuteCents: 3500,
+          efficiency: 1.25,
+          heatGeneratedPerMin: 0.0,
+          heatDissipationPerMin: 4.0,
+          sanityDrainRate: 0.01,
+          durability: 1.0,
+          assignedNodeId: null
+        }
+      },
       nodes: {
         node_broadcasting_hub: {
           id: 'node_broadcasting_hub',
@@ -36,6 +65,16 @@ export class GameEngine {
           workerCapacity: 2,
           isCompromised: false,
           sanityRecoveryRatePerMin: 0.005
+        },
+        node_molly_pop: {
+          id: 'node_molly_pop',
+          name: 'Molly Pop Confectionery (Front Store)',
+          tier: 1,
+          baseYieldPerMinCents: 12000, // $120.00/min
+          upgradeCostCents: 200000,    // $2,000.00
+          workerCapacity: 3,
+          isCompromised: false,
+          sanityRecoveryRatePerMin: 0.008
         }
       },
       tapeCatalog: {
@@ -68,6 +107,36 @@ export class GameEngine {
             'Ghost bank account linked to Pacific Haven trust'
           ],
           glitchIntensity: 0.45
+        },
+        tape_003_deep_sea: {
+          id: 'tape_003_deep_sea',
+          title: 'Deep Sea Hydrophone Anomaly [Abyssal Log]',
+          category: 'SURVEILLANCE_LOG',
+          rentalCostCents: 18000,      // $180.00 rental
+          sanityCost: 0.08,
+          durationSeconds: 150,        // 2.5-minute window
+          potentialYieldCents: 85000,  // $850.00 decode reward
+          heatGenerated: 6.0,
+          clues: [
+            'Sub-trench acoustic pattern matched secret naval transponder',
+            'Pressure hull telemetry recorded at -10,920m depth'
+          ],
+          glitchIntensity: 0.35
+        },
+        tape_004_constellation_relay: {
+          id: 'tape_004_constellation_relay',
+          title: 'Orion Sector Radio Telescope Decrypt',
+          category: 'NUMBER_STATION',
+          rentalCostCents: 30000,      // $300.00 rental
+          sanityCost: 0.15,
+          durationSeconds: 240,        // 4-minute window
+          potentialYieldCents: 160000, // $1,600.00 decode reward
+          heatGenerated: 8.0,
+          clues: [
+            'Star chart coordinates align with offshore broadcast beacon',
+            'Binary burst synchronized with UTC sidereal time'
+          ],
+          glitchIntensity: 0.50
         }
       },
       activeRentals: {},

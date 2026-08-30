@@ -11,22 +11,37 @@ import {
 
 export function gameReducer(state: GameState, action: GameAction): GameState {
   switch (action.type) {
+    case 'SET_PLAYER_ALIAS': {
+      return {
+        ...state,
+        player: {
+          ...state.player,
+          alias: action.alias.trim().toUpperCase()
+        }
+      };
+    }
+
     case 'RECRUIT_WORKER': {
       const tier = Math.min(5, Math.max(1, action.tier || 1));
       const id = `${action.role.toLowerCase()}_${Date.now()}_${Math.random().toString(36).substring(2, 6)}`;
       const isBenjamin = action.role === WorkerRole.BENJAMIN;
+      const isElias = action.role === WorkerRole.ELIAS;
 
       const newWorker: Worker = {
         id,
-        codename: isBenjamin ? action.codename.toUpperCase() : `ALIAS::${action.codename.toUpperCase()}`,
+        codename: isBenjamin
+          ? action.codename.toUpperCase()
+          : isElias
+          ? `ALIAS::${action.codename.toUpperCase()}`
+          : `OP::${action.codename.toUpperCase()}`,
         role: action.role,
         status: WorkerStatus.ACTIVE,
         tier,
-        salaryPerMinuteCents: (isBenjamin ? 5000 : 3500) * tier,
-        efficiency: isBenjamin ? 1.5 + tier * 0.5 : 1.0 + tier * 0.25,
+        salaryPerMinuteCents: (isBenjamin ? 5000 : isElias ? 3500 : 2500) * tier,
+        efficiency: isBenjamin ? 1.5 + tier * 0.5 : isElias ? 1.0 + tier * 0.25 : 1.2 * tier,
         heatGeneratedPerMin: isBenjamin ? 2.5 * tier : 0.0,
-        heatDissipationPerMin: isBenjamin ? 0.0 : 4.0 * tier,
-        sanityDrainRate: isBenjamin ? -0.005 * tier : 0.01 * tier,
+        heatDissipationPerMin: isElias ? 4.0 * tier : 0.0,
+        sanityDrainRate: isBenjamin ? -0.005 * tier : isElias ? 0.01 * tier : 0.002 * tier,
         durability: 1.0,
         assignedNodeId: null
       };
