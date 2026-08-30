@@ -1,0 +1,17 @@
+{
+  "network": {
+    "tor": {
+      "enabled": true,
+      "socksHost": "127.0.0.1",
+      "socksPort": 9050,
+      "controlPort": 9051,
+      "targetOnionAddress": "blockbustundergrnd7x3k9m2p4q8w1z6v5c4b3a2s1d0f9g8h7j6k5l4m3.onion",
+      "timeoutMs": 6000,
+      "fallbackToDirect": false
+    },
+    "simulation": {
+      "autoReconnect": true,
+      "heartbeatIntervalSeconds": 30
+    }
+  }
+}

@@ -4,3 +4,4 @@ export * from './tape';
 export * from './state';
 export * from './action';
 export * from './middleware';
+export * from './network';

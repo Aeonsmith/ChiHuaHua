@@ -1,0 +1,16 @@
+# Blockbuster: Underground - Local Tor Configuration Example
+# Copy or append to torrc when running a local Tor daemon.
+
+## Client & SOCKS5 Configuration
+SOCKSPort 127.0.0.1:9050
+ControlPort 127.0.0.1:9051
+CookieAuthentication 1
+
+## Circuit & Isolation Rules
+EnforceDistinctSubnets 1
+ClientOnly 1
+SafeLogging 1
+
+## Optional Onion Service Configuration (if hosting simulation relay)
+# HiddenServiceDir /var/lib/tor/blockbuster_service/
+# HiddenServicePort 80 127.0.0.1:8080
