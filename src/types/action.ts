@@ -17,6 +17,8 @@ export type GameAction =
   | { type: 'SCRUB_TAPE_FORENSICS'; tapeId: string; effortDeltaPercent: number }
   | { type: 'REGISTER_INVESTMENT'; item: InvestmentItem }
   | { type: 'PURCHASE_INVESTMENT'; itemId: string }
+  | { type: 'RESTOCK_PHARMACY_PRODUCT'; productId: string; quantity: number }
+  | { type: 'SET_PRODUCT_PRICE'; productId: string; newPriceCents: number }
   | { type: 'NUKE_STATE' }
   | { type: 'LOAD_SAVED_STATE'; state: GameState }
   | { type: 'DISMISS_ALERT'; alertId: string }

@@ -75,6 +75,16 @@ export class GameEngine {
           workerCapacity: 3,
           isCompromised: false,
           sanityRecoveryRatePerMin: 0.008
+        },
+        node_nav_norway: {
+          id: 'node_nav_norway',
+          name: 'NAV Kontor (Norwegian Welfare & Security Hub)',
+          tier: 1,
+          baseYieldPerMinCents: 8500,  // $85.00/min state welfare/pension grant
+          upgradeCostCents: 150000,    // $1,500.00
+          workerCapacity: 2,
+          isCompromised: false,
+          sanityRecoveryRatePerMin: 0.010 // Social safety net restores sanity
         }
       },
       tapeCatalog: {
@@ -137,6 +147,21 @@ export class GameEngine {
             'Binary burst synchronized with UTC sidereal time'
           ],
           glitchIntensity: 0.50
+        },
+        tape_005_nav_archive: {
+          id: 'tape_005_nav_archive',
+          title: 'NAV Oslo Sentrum - Encrypted Benefit Archive [1999]',
+          category: 'BLACK_LEDGER',
+          rentalCostCents: 14000,      // $140.00 rental
+          sanityCost: 0.05,
+          durationSeconds: 160,        // 2.6-minute window
+          potentialYieldCents: 75000,  // $750.00 state audit payout
+          heatGenerated: 4.0,
+          clues: [
+            'Kommune subsidy ledger reveals untraced offshore deposit',
+            'Folketrygden digital mainframe key located at BankID backup node'
+          ],
+          glitchIntensity: 0.30
         }
       },
       activeRentals: {},
@@ -207,6 +232,54 @@ export class GameEngine {
           description: 'Dedicated low-earth-orbit transponder for global high-frequency encryption and untraceable data leasing.',
           isPurchased: false
         }
+      },
+      pharmacyInventory: {
+        prod_ibuprofen_400: {
+          id: 'prod_ibuprofen_400',
+          name: 'Ibuprofen 400mg (20-Pack)',
+          category: 'OVER_THE_COUNTER',
+          wholesaleCostCents: 350,       // $3.50 wholesale
+          retailPriceCents: 899,         // $8.99 retail
+          stockQuantity: 45,
+          qualityRating: 5,
+          description: 'Standard anti-inflammatory pain relief medication (NSAID).'
+        },
+        prod_amoxicillin_500: {
+          id: 'prod_amoxicillin_500',
+          name: 'Amoxicillin 500mg Capsules',
+          category: 'PRESCRIPTION_WELLNESS',
+          wholesaleCostCents: 850,       // $8.50 wholesale
+          retailPriceCents: 2499,        // $24.99 retail
+          stockQuantity: 25,
+          qualityRating: 5,
+          description: 'Broad-spectrum beta-lactam antibiotic for bacterial infections.'
+        },
+        prod_multivitamin_complex: {
+          id: 'prod_multivitamin_complex',
+          name: 'Vitamin B-Complex & Zinc Elixir',
+          category: 'VITAMINS_SUPPLEMENTS',
+          wholesaleCostCents: 500,       // $5.00 wholesale
+          retailPriceCents: 1450,        // $14.50 retail
+          stockQuantity: 30,
+          qualityRating: 5,
+          description: 'Daily cellular energy booster and immune support multivitamin formula.'
+        },
+        prod_antiseptic_kit: {
+          id: 'prod_antiseptic_kit',
+          name: 'Emergency Surgical Dressing & Antiseptic',
+          category: 'FIRST_AID',
+          wholesaleCostCents: 600,       // $6.00 wholesale
+          retailPriceCents: 1799,        // $17.99 retail
+          stockQuantity: 20,
+          qualityRating: 4,
+          description: 'Sterile trauma dressing pads and povidone-iodine antiseptic solution.'
+        }
+      },
+      customerSatisfaction: {
+        satisfactionScore: 0.88,         // 88% customer satisfaction
+        loyaltyTier: 'GOLD',
+        totalCustomersServed: 120,
+        stockoutPenaltyCount: 0
       },
       unlockedClues: [],
       runtime: {

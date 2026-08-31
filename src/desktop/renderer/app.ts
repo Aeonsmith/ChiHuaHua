@@ -33,6 +33,11 @@ const meterHeat = document.getElementById('meter-heat')!;
 const valHeat = document.getElementById('val-heat')!;
 const meterDistortion = document.getElementById('meter-distortion')!;
 const valDistortion = document.getElementById('val-distortion')!;
+const meterSatisfaction = document.getElementById('meter-satisfaction');
+const valSatisfaction = document.getElementById('val-satisfaction');
+const valLoyalty = document.getElementById('val-loyalty');
+const valServed = document.getElementById('val-served');
+const pharmacyList = document.getElementById('pharmacy-list');
 const raidBanner = document.getElementById('raid-banner')!;
 const operativesList = document.getElementById('operatives-list')!;
 const nodesList = document.getElementById('nodes-list')!;
@@ -173,6 +178,31 @@ function updateUI(state: any): void {
     `).join('');
   }
 
+  // 4c. Pharmacy Products & Satisfaction Meter
+  if (state.customerSatisfaction && meterSatisfaction && valSatisfaction && valLoyalty && valServed) {
+    const satPct = Math.round((state.customerSatisfaction.satisfactionScore || 0.85) * 100);
+    meterSatisfaction.style.width = `${satPct}%`;
+    valSatisfaction.textContent = `${satPct}%`;
+    valLoyalty.textContent = state.customerSatisfaction.loyaltyTier || 'GOLD';
+    valServed.textContent = state.customerSatisfaction.totalCustomersServed || 0;
+  }
+
+  if (state.pharmacyInventory && pharmacyList) {
+    const products = Object.values(state.pharmacyInventory);
+    pharmacyList.innerHTML = products.map((p: any) => `
+      <div class="item-card">
+        <div class="item-card-header">
+          <span style="color: var(--crt-cyan);">💊 ${p.name}</span>
+          <span>Stock: ${p.stockQuantity}</span>
+        </div>
+        <div style="display: flex; justify-content: space-between; font-size: 11px; margin: 2px 0;">
+          <span>Cost: ${formatCurrency(p.wholesaleCostCents)} | Retail: ${formatCurrency(p.retailPriceCents)}</span>
+          <button class="btn btn-secondary" style="padding: 2px 6px;" onclick="restockProduct('${p.id}', 10)">+ Restock 10x ($${((p.wholesaleCostCents * 10)/100).toFixed(2)})</button>
+        </div>
+      </div>
+    `).join('');
+  }
+
   // 5. Tape Catalog
   const tapes = Object.values(state.tapeCatalog);
   tapeCatalog.innerHTML = tapes.map((t: any) => `
@@ -226,6 +256,11 @@ function updateTorUI(info: any): void {
 (window as any).buyInvestment = (itemId: string) => {
   window.api.dispatch({ type: 'PURCHASE_INVESTMENT', itemId });
   logMessage(`Acquired wishlist asset/venture [${itemId}]`);
+};
+
+(window as any).restockProduct = (productId: string, quantity: number = 10) => {
+  window.api.dispatch({ type: 'RESTOCK_PHARMACY_PRODUCT', productId, quantity });
+  logMessage(`Ordered pharmacy shipment (+${quantity} units of [${productId}])`);
 };
 
 (window as any).promoteWorker = (workerId: string) => {

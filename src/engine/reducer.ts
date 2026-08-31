@@ -264,6 +264,62 @@ export function gameReducer(state: GameState, action: GameAction): GameState {
       };
     }
 
+    case 'RESTOCK_PHARMACY_PRODUCT': {
+      const product = state.pharmacyInventory[action.productId];
+      if (!product || action.quantity <= 0) return state;
+
+      const totalCost = product.wholesaleCostCents * action.quantity;
+      if (state.player.cashCents < totalCost) return state;
+
+      const updatedProduct = {
+        ...product,
+        stockQuantity: product.stockQuantity + action.quantity
+      };
+
+      const alerts: GameAlert[] = [
+        ...state.runtime.unresolvedAlerts,
+        {
+          id: `alert_restock_${Date.now()}`,
+          type: 'PHARMACY_RESTOCKED',
+          message: `Restocked ${action.quantity}x [${product.name}] for $${(totalCost / 100).toFixed(2)}`,
+          timestamp: Date.now(),
+          severity: 'INFO'
+        }
+      ];
+
+      return {
+        ...state,
+        player: {
+          ...state.player,
+          cashCents: state.player.cashCents - totalCost
+        },
+        pharmacyInventory: {
+          ...state.pharmacyInventory,
+          [action.productId]: updatedProduct
+        },
+        runtime: {
+          ...state.runtime,
+          unresolvedAlerts: alerts
+        }
+      };
+    }
+
+    case 'SET_PRODUCT_PRICE': {
+      const product = state.pharmacyInventory[action.productId];
+      if (!product || action.newPriceCents <= 0) return state;
+
+      return {
+        ...state,
+        pharmacyInventory: {
+          ...state.pharmacyInventory,
+          [action.productId]: {
+            ...product,
+            retailPriceCents: action.newPriceCents
+          }
+        }
+      };
+    }
+
     case 'REGISTER_INVESTMENT': {
       return {
         ...state,
@@ -410,6 +466,56 @@ export function gameReducer(state: GameState, action: GameAction): GameState {
         }
       }
 
+      // 1c. Process Pharmacy Customer Sales & Satisfaction Model
+      let updatedInventory = { ...state.pharmacyInventory };
+      let updatedSatisfaction = { ...state.customerSatisfaction };
+
+      if (state.pharmacyInventory && Object.keys(state.pharmacyInventory).length > 0) {
+        let totalSalesRevenue = 0;
+        let stockouts = 0;
+        let successfulSales = 0;
+
+        for (const pid in updatedInventory) {
+          const item = { ...updatedInventory[pid] };
+          // Customer demand calculation based on price fair margin and satisfaction
+          const priceMultiplier = item.retailPriceCents / Math.max(1, item.wholesaleCostCents * 1.5);
+          const baseDemandUnits = Math.max(1, Math.round((5.0 / Math.max(0.5, priceMultiplier)) * dtMin * 4));
+
+          if (item.stockQuantity >= baseDemandUnits) {
+            item.stockQuantity -= baseDemandUnits;
+            totalSalesRevenue += baseDemandUnits * item.retailPriceCents;
+            successfulSales += baseDemandUnits;
+          } else if (item.stockQuantity > 0) {
+            totalSalesRevenue += item.stockQuantity * item.retailPriceCents;
+            successfulSales += item.stockQuantity;
+            item.stockQuantity = 0;
+            stockouts += 1;
+          } else {
+            stockouts += 1;
+          }
+
+          updatedInventory[pid] = item;
+        }
+
+        cashDelta += totalSalesRevenue;
+
+        // Satisfaction meter calculations
+        let satisfactionShift = (successfulSales * 0.005) - (stockouts * 0.01);
+        let newScore = Math.min(1.0, Math.max(0.05, (updatedSatisfaction.satisfactionScore || 0.85) + satisfactionShift * dtMin));
+
+        let loyaltyTier: 'BRONZE' | 'SILVER' | 'GOLD' | 'PLATINUM' = 'BRONZE';
+        if (newScore >= 0.90) loyaltyTier = 'PLATINUM';
+        else if (newScore >= 0.75) loyaltyTier = 'GOLD';
+        else if (newScore >= 0.50) loyaltyTier = 'SILVER';
+
+        updatedSatisfaction = {
+          satisfactionScore: newScore,
+          loyaltyTier,
+          totalCustomersServed: (updatedSatisfaction.totalCustomersServed || 0) + successfulSales,
+          stockoutPenaltyCount: (updatedSatisfaction.stockoutPenaltyCount || 0) + stockouts
+        };
+      }
+
       // 2. Process Worker Loops
       const updatedWorkers: Record<string, Worker> = {};
       for (const workerId in state.workers) {
@@ -512,6 +618,8 @@ export function gameReducer(state: GameState, action: GameAction): GameState {
         },
         workers: updatedWorkers,
         activeRentals: updatedRentals,
+        pharmacyInventory: updatedInventory,
+        customerSatisfaction: updatedSatisfaction,
         runtime: {
           ...state.runtime,
           lastTickEpochMs: action.currentEpochMs,
