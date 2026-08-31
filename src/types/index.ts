@@ -3,6 +3,7 @@ export * from './node';
 export * from './tape';
 export * from './investment';
 export * from './pharmacy';
+export * from './commodities';
 export * from './state';
 export * from './action';
 export * from './middleware';

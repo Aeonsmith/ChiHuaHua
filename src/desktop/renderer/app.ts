@@ -38,6 +38,7 @@ const valSatisfaction = document.getElementById('val-satisfaction');
 const valLoyalty = document.getElementById('val-loyalty');
 const valServed = document.getElementById('val-served');
 const pharmacyList = document.getElementById('pharmacy-list');
+const blackMarketList = document.getElementById('black-market-list');
 const raidBanner = document.getElementById('raid-banner')!;
 const operativesList = document.getElementById('operatives-list')!;
 const nodesList = document.getElementById('nodes-list')!;
@@ -203,6 +204,24 @@ function updateUI(state: any): void {
     `).join('');
   }
 
+  // 4d. Black Market Commodities
+  if (state.blackMarketInventory && blackMarketList) {
+    const comms = Object.values(state.blackMarketInventory);
+    blackMarketList.innerHTML = comms.map((c: any) => `
+      <div class="item-card" style="border-color: rgba(255, 51, 68, 0.3);">
+        <div class="item-card-header">
+          <span style="color: var(--crt-amber); font-weight: bold;">⚡ ${c.name}</span>
+          <span style="color: var(--crt-red); font-size: 10px;">+${c.heatGeneratedPerSale} Heat</span>
+        </div>
+        <div style="font-size: 10px; color: #ccaa99; margin: 2px 0;">${c.description}</div>
+        <div style="display: flex; justify-content: space-between; align-items: center; font-size: 11px;">
+          <span>Stock: ${c.stockUnits} | Retail: ${formatCurrency(c.retailPriceCents)}</span>
+          <button class="btn btn-danger" style="padding: 2px 6px;" onclick="restockCommodity('${c.id}', 5)">+ Import 5x ($${((c.wholesaleCostCents * 5)/100).toFixed(2)})</button>
+        </div>
+      </div>
+    `).join('');
+  }
+
   // 5. Tape Catalog
   const tapes = Object.values(state.tapeCatalog);
   tapeCatalog.innerHTML = tapes.map((t: any) => `
@@ -261,6 +280,11 @@ function updateTorUI(info: any): void {
 (window as any).restockProduct = (productId: string, quantity: number = 10) => {
   window.api.dispatch({ type: 'RESTOCK_PHARMACY_PRODUCT', productId, quantity });
   logMessage(`Ordered pharmacy shipment (+${quantity} units of [${productId}])`);
+};
+
+(window as any).restockCommodity = (commodityId: string, units: number = 5) => {
+  window.api.dispatch({ type: 'RESTOCK_BLACK_MARKET', commodityId, units });
+  logMessage(`Imported underground contraband batch (+${units} units of [${commodityId}])`, 'WARN');
 };
 
 (window as any).promoteWorker = (workerId: string) => {

@@ -19,6 +19,8 @@ export type GameAction =
   | { type: 'PURCHASE_INVESTMENT'; itemId: string }
   | { type: 'RESTOCK_PHARMACY_PRODUCT'; productId: string; quantity: number }
   | { type: 'SET_PRODUCT_PRICE'; productId: string; newPriceCents: number }
+  | { type: 'RESTOCK_BLACK_MARKET'; commodityId: string; units: number }
+  | { type: 'SET_COMMODITY_PRICE'; commodityId: string; newPriceCents: number }
   | { type: 'NUKE_STATE' }
   | { type: 'LOAD_SAVED_STATE'; state: GameState }
   | { type: 'DISMISS_ALERT'; alertId: string }

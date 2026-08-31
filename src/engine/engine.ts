@@ -275,6 +275,56 @@ export class GameEngine {
           description: 'Sterile trauma dressing pads and povidone-iodine antiseptic solution.'
         }
       },
+      blackMarketInventory: {
+        comm_neuro_stimulant: {
+          id: 'comm_neuro_stimulant',
+          name: 'Class-IV Cognitive Neuro-Stimulant',
+          codename: 'SYNTH_SPEED_01',
+          tier: 2,
+          wholesaleCostCents: 4500,     // $45.00
+          retailPriceCents: 12000,      // $120.00
+          stockUnits: 15,
+          heatGeneratedPerSale: 1.2,
+          customerDemandRate: 4,
+          description: 'High-potency synthesized cognitive enhancer yielding rapid cash turnover with legal exposure.'
+        },
+        comm_botanical_resin: {
+          id: 'comm_botanical_resin',
+          name: 'High-Altitude Concentrated Herbal Resin',
+          codename: 'BLACK_HASH_RESIN',
+          tier: 1,
+          wholesaleCostCents: 2000,     // $20.00
+          retailPriceCents: 5500,       // $55.00
+          stockUnits: 25,
+          heatGeneratedPerSale: 0.6,
+          customerDemandRate: 6,
+          description: 'Traditional compressed aromatic botanical extract with broad street demand.'
+        },
+        comm_clinical_tranquilizer: {
+          id: 'comm_clinical_tranquilizer',
+          name: 'Clinical Sedative Compound (Blister Strip)',
+          codename: 'BENZO_TRANQ_90',
+          tier: 2,
+          wholesaleCostCents: 6000,     // $60.00
+          retailPriceCents: 15000,      // $150.00
+          stockUnits: 10,
+          heatGeneratedPerSale: 1.8,
+          customerDemandRate: 3,
+          description: 'Prescription-grade neuro-inhibitor traded in underground clinic channels.'
+        },
+        comm_mycelial_alkaloid: {
+          id: 'comm_mycelial_alkaloid',
+          name: 'Purified Botanical Neuro-Alkaloid',
+          codename: 'MYCELIAL_SPORE_EXTRACT',
+          tier: 1,
+          wholesaleCostCents: 3500,     // $35.00
+          retailPriceCents: 9500,       // $95.00
+          stockUnits: 18,
+          heatGeneratedPerSale: 0.8,
+          customerDemandRate: 5,
+          description: 'Refined natural psychedelic alkaloid extract popular among underground creative circuits.'
+        }
+      },
       customerSatisfaction: {
         satisfactionScore: 0.88,         // 88% customer satisfaction
         loyaltyTier: 'GOLD',

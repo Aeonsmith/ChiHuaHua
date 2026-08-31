@@ -3,6 +3,7 @@ import { RealEstateNode } from './node';
 import { TapeScenario, ActiveTapeRental } from './tape';
 import { InvestmentItem } from './investment';
 import { PharmacyProduct, CustomerSatisfactionState } from './pharmacy';
+import { BlackMarketCommodity } from './commodities';
 
 export interface PlayerState {
   alias: string;
@@ -14,7 +15,7 @@ export interface PlayerState {
 
 export interface GameAlert {
   id: string;
-  type: 'POLICE_RAID' | 'WORKER_BURNOUT' | 'TAPE_EXPIRED' | 'SANITY_COLLAPSE' | 'DECRYPTION_SUCCESS' | 'INVESTMENT_ACQUIRED' | 'NUKE_EXECUTED' | 'PHARMACY_RESTOCKED' | 'PHARMACY_SALE';
+  type: 'POLICE_RAID' | 'WORKER_BURNOUT' | 'TAPE_EXPIRED' | 'SANITY_COLLAPSE' | 'DECRYPTION_SUCCESS' | 'INVESTMENT_ACQUIRED' | 'NUKE_EXECUTED' | 'PHARMACY_RESTOCKED' | 'PHARMACY_SALE' | 'BLACK_MARKET_RESTOCKED';
   message: string;
   timestamp: number;
   severity: 'INFO' | 'WARNING' | 'CRITICAL';
@@ -36,6 +37,7 @@ export interface GameState {
   activeRentals: Record<string, ActiveTapeRental>;
   investments: Record<string, InvestmentItem>;
   pharmacyInventory: Record<string, PharmacyProduct>;
+  blackMarketInventory: Record<string, BlackMarketCommodity>;
   customerSatisfaction: CustomerSatisfactionState;
   unlockedClues: string[];
   runtime: RuntimeState;

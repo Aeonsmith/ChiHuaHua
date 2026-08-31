@@ -320,6 +320,46 @@ export function gameReducer(state: GameState, action: GameAction): GameState {
       };
     }
 
+    case 'RESTOCK_BLACK_MARKET': {
+      const comm = state.blackMarketInventory[action.commodityId];
+      if (!comm || action.units <= 0) return state;
+
+      const totalCost = comm.wholesaleCostCents * action.units;
+      if (state.player.cashCents < totalCost) return state;
+
+      return {
+        ...state,
+        player: {
+          ...state.player,
+          cashCents: state.player.cashCents - totalCost,
+          heat: Math.min(100.0, state.player.heat + comm.heatGeneratedPerSale * 0.5)
+        },
+        blackMarketInventory: {
+          ...state.blackMarketInventory,
+          [action.commodityId]: {
+            ...comm,
+            stockUnits: comm.stockUnits + action.units
+          }
+        }
+      };
+    }
+
+    case 'SET_COMMODITY_PRICE': {
+      const comm = state.blackMarketInventory[action.commodityId];
+      if (!comm || action.newPriceCents <= 0) return state;
+
+      return {
+        ...state,
+        blackMarketInventory: {
+          ...state.blackMarketInventory,
+          [action.commodityId]: {
+            ...comm,
+            retailPriceCents: action.newPriceCents
+          }
+        }
+      };
+    }
+
     case 'REGISTER_INVESTMENT': {
       return {
         ...state,
@@ -516,6 +556,33 @@ export function gameReducer(state: GameState, action: GameAction): GameState {
         };
       }
 
+      // 1d. Process Black Market Commodity Sales & Heat Generation
+      let updatedBlackMarket = { ...state.blackMarketInventory };
+      if (state.blackMarketInventory && Object.keys(state.blackMarketInventory).length > 0) {
+        let blackMarketRevenue = 0;
+        let blackMarketHeat = 0;
+
+        for (const cid in updatedBlackMarket) {
+          const comm = { ...updatedBlackMarket[cid] };
+          const demand = Math.max(1, Math.round(comm.customerDemandRate * dtMin * 3));
+
+          if (comm.stockUnits >= demand) {
+            comm.stockUnits -= demand;
+            blackMarketRevenue += demand * comm.retailPriceCents;
+            blackMarketHeat += demand * comm.heatGeneratedPerSale;
+          } else if (comm.stockUnits > 0) {
+            blackMarketRevenue += comm.stockUnits * comm.retailPriceCents;
+            blackMarketHeat += comm.stockUnits * comm.heatGeneratedPerSale;
+            comm.stockUnits = 0;
+          }
+
+          updatedBlackMarket[cid] = comm;
+        }
+
+        cashDelta += blackMarketRevenue;
+        heatDelta += blackMarketHeat;
+      }
+
       // 2. Process Worker Loops
       const updatedWorkers: Record<string, Worker> = {};
       for (const workerId in state.workers) {
@@ -619,6 +686,7 @@ export function gameReducer(state: GameState, action: GameAction): GameState {
         workers: updatedWorkers,
         activeRentals: updatedRentals,
         pharmacyInventory: updatedInventory,
+        blackMarketInventory: updatedBlackMarket,
         customerSatisfaction: updatedSatisfaction,
         runtime: {
           ...state.runtime,
