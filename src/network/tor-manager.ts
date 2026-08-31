@@ -78,7 +78,7 @@ export class TorManager {
           status,
           proxyAddress,
           targetOnion: this.config.targetOnionAddress,
-          latencyMs: this.lastLatencyMs || undefined,
+          latencyMs: this.lastLatencyMs !== null ? this.lastLatencyMs : undefined,
           lastCheckedEpochMs: Date.now(),
           errorMessage: errorMsg
         });
@@ -179,7 +179,7 @@ export class TorManager {
       status: this.currentStatus,
       proxyAddress: `${this.config.socksHost}:${this.config.socksPort}`,
       targetOnion: this.config.targetOnionAddress,
-      latencyMs: this.lastLatencyMs || undefined,
+      latencyMs: this.lastLatencyMs !== null ? this.lastLatencyMs : undefined,
       lastCheckedEpochMs: Date.now(),
       errorMessage: this.lastError || undefined
     };

@@ -1,6 +1,7 @@
 import { Worker } from './worker';
 import { RealEstateNode } from './node';
 import { TapeScenario, ActiveTapeRental } from './tape';
+import { InvestmentItem } from './investment';
 
 export interface PlayerState {
   alias: string;
@@ -12,7 +13,7 @@ export interface PlayerState {
 
 export interface GameAlert {
   id: string;
-  type: 'POLICE_RAID' | 'WORKER_BURNOUT' | 'TAPE_EXPIRED' | 'SANITY_COLLAPSE' | 'DECRYPTION_SUCCESS';
+  type: 'POLICE_RAID' | 'WORKER_BURNOUT' | 'TAPE_EXPIRED' | 'SANITY_COLLAPSE' | 'DECRYPTION_SUCCESS' | 'INVESTMENT_ACQUIRED' | 'NUKE_EXECUTED';
   message: string;
   timestamp: number;
   severity: 'INFO' | 'WARNING' | 'CRITICAL';
@@ -32,6 +33,7 @@ export interface GameState {
   nodes: Record<string, RealEstateNode>;
   tapeCatalog: Record<string, TapeScenario>;
   activeRentals: Record<string, ActiveTapeRental>;
+  investments: Record<string, InvestmentItem>;
   unlockedClues: string[];
   runtime: RuntimeState;
 }

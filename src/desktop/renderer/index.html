@@ -23,6 +23,8 @@
         <div class="pill operator-pill">OP: <strong id="val-operator">JACK</strong></div>
         <div class="pill tor-pill">TOR ONION: <span id="val-tor-status" class="status-badge">DISCONNECTED</span> <span id="val-tor-latency" class="latency-badge">--ms</span></div>
         <div class="pill tick-pill">TICK: #<span id="val-ticks">0</span></div>
+        <button id="btn-save-game" class="btn btn-secondary" style="padding: 2px 8px;">💾 Save</button>
+        <button id="btn-load-game" class="btn btn-secondary" style="padding: 2px 8px;">📂 Load</button>
       </div>
     </header>
 
@@ -75,9 +77,12 @@
         <div id="nodes-list" class="nodes-container"></div>
       </section>
 
-      <!-- Column 2: Analog VHS Vault & Forensics Scrubbing -->
+      <!-- Column 2: Analog VHS Vault & Wishlist Storefront -->
       <section class="panel panel-center">
-        <div class="panel-header">ANALOG TAPE VAULT & ACTIVE LEASES</div>
+        <div class="panel-header">LUXURY WISHLIST & VENTURE INVESTMENTS</div>
+        <div id="investments-catalog" class="investments-catalog-grid"></div>
+
+        <div class="panel-header section-mt">ANALOG TAPE VAULT & ACTIVE LEASES</div>
         <div id="tape-catalog" class="tape-catalog-grid"></div>
 
         <div class="panel-header section-mt">ACTIVE FORENSICS SCRUBBING DECK</div>
@@ -97,6 +102,15 @@
         <div class="actions-stack">
           <button id="btn-restore-sanity" class="btn btn-tactical">🛡️ Restore Sanity Clarity ($100)</button>
           <button id="btn-ping-tor" class="btn btn-tactical">🧅 Ping Tor Onion Circuit</button>
+        </div>
+
+        <div class="panel-header section-mt">EMERGENCY PROTOCOL (SCORCHED EARTH)</div>
+        <div class="nuke-wrapper">
+          <button id="btn-nuke-state" class="btn-nuke">
+            <span class="nuke-symbol">☢️</span>
+            <span class="nuke-title">EMERGENCY NUKE</span>
+            <span class="nuke-sub">INCINERATE ALL LOGS & HEAT</span>
+          </button>
         </div>
 
         <div class="panel-header section-mt">SYSTEM TELEMETRY LOGS</div>

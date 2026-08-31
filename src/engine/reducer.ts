@@ -264,6 +264,98 @@ export function gameReducer(state: GameState, action: GameAction): GameState {
       };
     }
 
+    case 'REGISTER_INVESTMENT': {
+      return {
+        ...state,
+        investments: {
+          ...state.investments,
+          [action.item.id]: action.item
+        }
+      };
+    }
+
+    case 'PURCHASE_INVESTMENT': {
+      const item = state.investments[action.itemId];
+      if (!item || item.isPurchased || state.player.cashCents < item.costCents) {
+        return state;
+      }
+
+      const updatedItem = { ...item, isPurchased: true };
+      const nextCash = state.player.cashCents - item.costCents;
+      const nextSanity = Math.min(1.0, state.player.sanity + item.sanityBoost);
+      const nextHeat = Math.max(0.0, state.player.heat - item.heatReduction);
+
+      const alerts: GameAlert[] = [
+        ...state.runtime.unresolvedAlerts,
+        {
+          id: `alert_inv_${Date.now()}`,
+          type: 'INVESTMENT_ACQUIRED',
+          message: `Acquired [${item.title}]! (${item.passiveYieldPerMinCents > 0 ? `+${(item.passiveYieldPerMinCents / 100).toFixed(2)}/min passive yield` : `+${(item.sanityBoost * 100).toFixed(0)}% sanity clarity`})`,
+          timestamp: Date.now(),
+          severity: 'INFO'
+        }
+      ];
+
+      return {
+        ...state,
+        player: {
+          ...state.player,
+          cashCents: nextCash,
+          sanity: nextSanity,
+          heat: nextHeat
+        },
+        investments: {
+          ...state.investments,
+          [action.itemId]: updatedItem
+        },
+        runtime: {
+          ...state.runtime,
+          unresolvedAlerts: alerts
+        }
+      };
+    }
+
+    case 'NUKE_STATE': {
+      const nukeAlert: GameAlert = {
+        id: `alert_nuke_${Date.now()}`,
+        type: 'NUKE_EXECUTED',
+        message: '🚨 SCORCHED EARTH PROTOCOL EXECUTED! All surveillance logs, legal heat, and operative ties incinerated!',
+        timestamp: Date.now(),
+        severity: 'CRITICAL'
+      };
+
+      return {
+        ...state,
+        player: {
+          alias: state.player.alias || 'JACK',
+          cashCents: 100000, // $1,000.00 clean seed capital
+          sanity: 1.0,       // 100% clarity
+          heat: 0.0,         // 0% heat
+          distortionIndex: 0.0
+        },
+        workers: {},
+        activeRentals: {},
+        unlockedClues: [],
+        runtime: {
+          lastTickEpochMs: Date.now(),
+          totalTicksElapsed: 0,
+          isRaidActive: false,
+          isClockSkewed: false,
+          unresolvedAlerts: [nukeAlert]
+        }
+      };
+    }
+
+    case 'LOAD_SAVED_STATE': {
+      return {
+        ...action.state,
+        runtime: {
+          ...action.state.runtime,
+          lastTickEpochMs: Date.now()
+        }
+      };
+    }
+
     case 'DISMISS_ALERT': {
       return {
         ...state,
@@ -305,6 +397,16 @@ export function gameReducer(state: GameState, action: GameAction): GameState {
         const node = state.nodes[nodeId];
         if (!node.isCompromised) {
           sanityDelta += node.sanityRecoveryRatePerMin * dtMin;
+        }
+      }
+
+      // 1b. Passive income from purchased business venture investments
+      if (state.investments) {
+        for (const itemId in state.investments) {
+          const item = state.investments[itemId];
+          if (item.isPurchased && item.passiveYieldPerMinCents > 0) {
+            cashDelta += item.passiveYieldPerMinCents * dtMin;
+          }
         }
       }
 

@@ -7,6 +7,9 @@ declare global {
       getState: () => Promise<any>;
       dispatch: (action: any) => Promise<any>;
       onStateUpdate: (callback: (state: any) => void) => () => void;
+      saveGame: () => Promise<boolean>;
+      loadGame: () => Promise<boolean>;
+      nukeGame: () => Promise<any>;
       getTorStatus: () => Promise<any>;
       checkTorProxy: () => Promise<any>;
       onTorStatusUpdate: (callback: (info: any) => void) => () => void;
@@ -33,6 +36,7 @@ const valDistortion = document.getElementById('val-distortion')!;
 const raidBanner = document.getElementById('raid-banner')!;
 const operativesList = document.getElementById('operatives-list')!;
 const nodesList = document.getElementById('nodes-list')!;
+const investmentsCatalog = document.getElementById('investments-catalog')!;
 const tapeCatalog = document.getElementById('tape-catalog')!;
 const activeRentalsList = document.getElementById('active-rentals-list')!;
 const intelCluesList = document.getElementById('intel-clues-list')!;
@@ -149,6 +153,26 @@ function updateUI(state: any): void {
     </div>
   `).join('');
 
+  // 4b. Investments & Wishlist Catalog
+  if (state.investments) {
+    const invs = Object.values(state.investments);
+    investmentsCatalog.innerHTML = invs.map((inv: any) => `
+      <div class="investment-card ${inv.isPurchased ? 'purchased' : ''}">
+        <div class="investment-info">
+          <span class="investment-title">${inv.title}</span>
+          <span class="investment-desc">${inv.description}</span>
+          <span class="investment-meta">
+            Price: ${formatCurrency(inv.costCents)} | 
+            ${inv.passiveYieldPerMinCents > 0 ? `Yield: +${formatCurrency(inv.passiveYieldPerMinCents)}/m` : `Sanity: +${(inv.sanityBoost * 100).toFixed(0)}%`}
+          </span>
+        </div>
+        ${inv.isPurchased 
+          ? '<span class="status-badge" style="color: var(--crt-green);">ACQUIRED</span>' 
+          : `<button class="btn btn-primary" onclick="buyInvestment('${inv.id}')">Acquire</button>`}
+      </div>
+    `).join('');
+  }
+
   // 5. Tape Catalog
   const tapes = Object.values(state.tapeCatalog);
   tapeCatalog.innerHTML = tapes.map((t: any) => `
@@ -199,6 +223,11 @@ function updateTorUI(info: any): void {
 }
 
 // Global action bridges for inline onclicks
+(window as any).buyInvestment = (itemId: string) => {
+  window.api.dispatch({ type: 'PURCHASE_INVESTMENT', itemId });
+  logMessage(`Acquired wishlist asset/venture [${itemId}]`);
+};
+
 (window as any).promoteWorker = (workerId: string) => {
   window.api.dispatch({ type: 'UPGRADE_WORKER', workerId });
   logMessage(`Promoted operative [${workerId}] to next tier level`);
@@ -253,6 +282,35 @@ document.getElementById('btn-ping-tor')!.addEventListener('click', () => {
 document.getElementById('btn-resolve-raid')?.addEventListener('click', () => {
   window.api.dispatch({ type: 'RESOLVE_POLICE_RAID', bribesPaidCents: 20000, success: true });
   logMessage(`Dispatched bribe payoff ($200.00). Surveillance breach mitigated.`, 'WARN');
+});
+
+document.getElementById('btn-save-game')?.addEventListener('click', () => {
+  window.api.saveGame().then((success) => {
+    if (success) {
+      logMessage('💾 Game state successfully serialized to save_game.json');
+    } else {
+      logMessage('⚠️ Failed to save game state', 'WARN');
+    }
+  });
+});
+
+document.getElementById('btn-load-game')?.addEventListener('click', () => {
+  window.api.loadGame().then((success) => {
+    if (success) {
+      logMessage('📂 Game state restored from save_game.json');
+    } else {
+      logMessage('⚠️ No saved game found on disk', 'WARN');
+    }
+  });
+});
+
+document.getElementById('btn-nuke-state')?.addEventListener('click', () => {
+  const confirmed = confirm('⚠️ SCORCHED EARTH PROTOCOL: Are you sure you want to NUKE and incinerate all logs, legal heat, and active records?');
+  if (confirmed) {
+    window.api.nukeGame().then(() => {
+      logMessage('🚨 EMERGENCY NUKE ACTIVATED! All legal heat and logs incinerated to ground zero!', 'CRIT');
+    });
+  }
 });
 
 // Bootstrapping

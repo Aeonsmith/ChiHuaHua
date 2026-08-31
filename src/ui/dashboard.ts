@@ -68,7 +68,8 @@ export class TerminalDashboard {
 
   private printActionMenu(): void {
     console.log('\n[ACTIONS]: [1] Recruit Benjamin ($50/m) | [2] Recruit Elias ($35/m) | [3] Lease Tape ($100) | [4] Scrub Forensics (+50%)');
-    console.log('           [5] Resolve Raid ($200)      | [6] Restore Sanity ($100)   | [7] Ping Tor Circuit  | [Q] Exit Terminal');
+    console.log('           [5] Resolve Raid ($200)      | [6] Restore Sanity ($100)   | [7] Ping Tor Circuit  | [8] Buy Baby Luxe ($2500)');
+    console.log('           [9] Save Game State          | [0] Load Game State         | [NUKE] Emergency Nuke | [Q] Exit Terminal');
   }
 
   private promptCommand(): void {
@@ -167,6 +168,39 @@ export class TerminalDashboard {
 
       case '7': {
         this.torManager.checkSocksProxy().catch(() => {});
+        break;
+      }
+
+      case '8': {
+        this.engine.dispatch({
+          type: 'PURCHASE_INVESTMENT',
+          itemId: 'inv_baby_suite'
+        });
+        break;
+      }
+
+      case '9':
+      case 'SAVE': {
+        const { SaveManager } = require('../storage/save-manager');
+        const sm = new SaveManager();
+        sm.saveGame(this.engine.getState());
+        break;
+      }
+
+      case '0':
+      case 'LOAD': {
+        const { SaveManager } = require('../storage/save-manager');
+        const sm = new SaveManager();
+        const loaded = sm.loadGame();
+        if (loaded) {
+          this.engine.dispatch({ type: 'LOAD_SAVED_STATE', state: loaded });
+        }
+        break;
+      }
+
+      case 'NUKE':
+      case 'RESET': {
+        this.engine.dispatch({ type: 'NUKE_STATE' });
         break;
       }
 

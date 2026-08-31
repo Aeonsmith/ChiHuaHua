@@ -1,5 +1,7 @@
 import { WorkerRole } from './worker';
 import { TapeScenario } from './tape';
+import { InvestmentItem } from './investment';
+import { GameState } from './state';
 
 export type GameAction =
   | { type: 'TICK'; deltaSeconds: number; currentEpochMs: number }
@@ -13,6 +15,10 @@ export type GameAction =
   | { type: 'REGISTER_TAPE'; tape: TapeScenario }
   | { type: 'RENT_TAPE'; tapeId: string; currentEpochMs: number }
   | { type: 'SCRUB_TAPE_FORENSICS'; tapeId: string; effortDeltaPercent: number }
+  | { type: 'REGISTER_INVESTMENT'; item: InvestmentItem }
+  | { type: 'PURCHASE_INVESTMENT'; itemId: string }
+  | { type: 'NUKE_STATE' }
+  | { type: 'LOAD_SAVED_STATE'; state: GameState }
   | { type: 'DISMISS_ALERT'; alertId: string }
   | { type: 'RECOVER_SANITY'; recoveryCents: number }
   | { type: 'RESOLVE_POLICE_RAID'; bribesPaidCents: number; success: boolean };

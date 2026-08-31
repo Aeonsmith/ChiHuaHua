@@ -140,6 +140,74 @@ export class GameEngine {
         }
       },
       activeRentals: {},
+      investments: {
+        inv_baby_suite: {
+          id: 'inv_baby_suite',
+          title: 'Designer Nursery & Baby Luxe Suite',
+          category: 'FAMILY_WISHLIST',
+          costCents: 250000,           // $2,500.00
+          sanityBoost: 0.35,           // +35% clarity
+          passiveYieldPerMinCents: 0,
+          heatReduction: 10.0,
+          description: 'Custom handcrafted crib, organic nursery essentials, and soothing ambient lullaby acoustics for the baby.',
+          isPurchased: false
+        },
+        inv_sound_studio: {
+          id: 'inv_sound_studio',
+          title: 'Underground Sound Studio & Record Label',
+          category: 'VENTURE_BUSINESS',
+          costCents: 500000,           // $5,000.00
+          sanityBoost: 0.15,
+          passiveYieldPerMinCents: 45000, // +$450.00/min passive yield
+          heatReduction: 0.0,
+          description: 'Analog SSL mixing console, vintage Neumann microphones, and independent tape production mastering suite.',
+          isPurchased: false
+        },
+        inv_vintage_supercar: {
+          id: 'inv_vintage_supercar',
+          title: 'Vintage 1990s Testarossa Supercar',
+          category: 'LUXURY_TROPHY',
+          costCents: 1200000,          // $12,000.00
+          sanityBoost: 0.25,
+          passiveYieldPerMinCents: 0,
+          heatReduction: 0.0,
+          description: 'Rosso Corsa finish, gated 5-speed manual, pop-up headlights, and pristine midnight cruiser status.',
+          isPurchased: false
+        },
+        inv_diamond_chain: {
+          id: 'inv_diamond_chain',
+          title: 'Custom Iced-Out Cuban Link Chain',
+          category: 'STATUS_ASSET',
+          costCents: 800000,           // $8,000.00
+          sanityBoost: 0.15,
+          passiveYieldPerMinCents: 0,
+          heatReduction: 0.0,
+          description: 'Flawless VVS baguette stones with solid 18k white gold interlocking links.',
+          isPurchased: false
+        },
+        inv_vip_club: {
+          id: 'inv_vip_club',
+          title: 'Subterranean VIP Lounge & Nightclub',
+          category: 'VENTURE_BUSINESS',
+          costCents: 2500000,          // $25,000.00
+          sanityBoost: 0.10,
+          passiveYieldPerMinCents: 180000, // +$1,800.00/min passive yield
+          heatReduction: 0.0,
+          description: 'Soundproof basement lounge with private booths, bottle service, and steady weekend cash flow.',
+          isPurchased: false
+        },
+        inv_space_satellite: {
+          id: 'inv_space_satellite',
+          title: 'Orbital Private Satellite Relay Station',
+          category: 'VENTURE_BUSINESS',
+          costCents: 10000000,         // $100,000.00
+          sanityBoost: 0.30,
+          passiveYieldPerMinCents: 850000, // +$8,500.00/min passive yield
+          heatReduction: 20.0,
+          description: 'Dedicated low-earth-orbit transponder for global high-frequency encryption and untraceable data leasing.',
+          isPurchased: false
+        }
+      },
       unlockedClues: [],
       runtime: {
         lastTickEpochMs: Date.now(),

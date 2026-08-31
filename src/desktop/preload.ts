@@ -5,6 +5,9 @@ export interface DesktopAPI {
   getState: () => Promise<GameState>;
   dispatch: (action: GameAction) => Promise<GameState>;
   onStateUpdate: (callback: (state: GameState) => void) => () => void;
+  saveGame: () => Promise<boolean>;
+  loadGame: () => Promise<boolean>;
+  nukeGame: () => Promise<GameState>;
   getTorStatus: () => Promise<TorCircuitInfo>;
   checkTorProxy: () => Promise<TorCircuitInfo>;
   onTorStatusUpdate: (callback: (info: TorCircuitInfo) => void) => () => void;
@@ -18,6 +21,9 @@ const api: DesktopAPI = {
     ipcRenderer.on('game:state-update', handler);
     return () => ipcRenderer.removeListener('game:state-update', handler);
   },
+  saveGame: () => ipcRenderer.invoke('game:save'),
+  loadGame: () => ipcRenderer.invoke('game:load'),
+  nukeGame: () => ipcRenderer.invoke('game:nuke'),
   getTorStatus: () => ipcRenderer.invoke('tor:get-status'),
   checkTorProxy: () => ipcRenderer.invoke('tor:check-proxy'),
   onTorStatusUpdate: (callback: (info: TorCircuitInfo) => void) => {

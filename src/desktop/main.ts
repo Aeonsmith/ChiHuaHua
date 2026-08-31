@@ -2,11 +2,13 @@ import { app, BrowserWindow, ipcMain } from 'electron';
 import * as path from 'node:path';
 import { GameEngine } from '../engine/engine';
 import { TorManager } from '../network/tor-manager';
+import { SaveManager } from '../storage/save-manager';
 import { GameAction } from '../types';
 
 let mainWindow: BrowserWindow | null = null;
 const engine = new GameEngine();
 const torManager = new TorManager();
+const saveManager = new SaveManager();
 
 function createWindow(): void {
   mainWindow = new BrowserWindow({
@@ -55,6 +57,25 @@ ipcMain.handle('game:get-state', () => {
 
 ipcMain.handle('game:dispatch', (_, action: GameAction) => {
   engine.dispatch(action);
+  return engine.getState();
+});
+
+ipcMain.handle('game:save', () => {
+  const state = engine.getState();
+  return saveManager.saveGame(state);
+});
+
+ipcMain.handle('game:load', () => {
+  const loaded = saveManager.loadGame();
+  if (loaded) {
+    engine.dispatch({ type: 'LOAD_SAVED_STATE', state: loaded });
+    return true;
+  }
+  return false;
+});
+
+ipcMain.handle('game:nuke', () => {
+  engine.dispatch({ type: 'NUKE_STATE' });
   return engine.getState();
 });
 
