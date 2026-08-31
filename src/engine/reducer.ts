@@ -66,7 +66,22 @@ export function gameReducer(state: GameState, action: GameAction): GameState {
         ).length;
 
         if (assignedCount >= targetNode.workerCapacity) {
-          return state; // Node at maximum capacity
+          return {
+            ...state,
+            runtime: {
+              ...state.runtime,
+              unresolvedAlerts: [
+                ...state.runtime.unresolvedAlerts,
+                {
+                  id: `alert_cap_${Date.now()}`,
+                  type: 'SANITY_COLLAPSE',
+                  message: `Cannot assign [${worker.codename}] to [${targetNode.name}]: Station is at maximum capacity (${targetNode.workerCapacity}/${targetNode.workerCapacity})!`,
+                  timestamp: Date.now(),
+                  severity: 'WARNING'
+                }
+              ]
+            }
+          };
         }
       }
 
