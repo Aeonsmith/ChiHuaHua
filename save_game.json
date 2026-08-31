@@ -1,0 +1,1699 @@
+{
+  "player": {
+    "alias": "JACK",
+    "cashCents": 1687540.48575083,
+    "sanity": 1,
+    "heat": 0.3777906458333145,
+    "distortionIndex": 0.0011333719374999435
+  },
+  "workers": {
+    "worker_thomas": {
+      "id": "worker_thomas",
+      "codename": "THOMAS",
+      "role": "BENJAMIN",
+      "status": "ACTIVE",
+      "tier": 5,
+      "salaryPerMinuteCents": 25000,
+      "efficiency": 4,
+      "heatGeneratedPerMin": 12.5,
+      "heatDissipationPerMin": 0,
+      "sanityDrainRate": -0.025,
+      "durability": 1,
+      "assignedNodeId": "node_broadcasting_hub"
+    },
+    "worker_jonas": {
+      "id": "worker_jonas",
+      "codename": "JONAS",
+      "role": "ELIAS",
+      "status": "ACTIVE",
+      "tier": 5,
+      "salaryPerMinuteCents": 17500,
+      "efficiency": 2.25,
+      "heatGeneratedPerMin": 0,
+      "heatDissipationPerMin": 20,
+      "sanityDrainRate": 0.05,
+      "durability": 1,
+      "assignedNodeId": null
+    },
+    "elias_1788170140872_f288": {
+      "id": "elias_1788170140872_f288",
+      "codename": "ALIAS::ELIAS_0872",
+      "role": "ELIAS",
+      "status": "ACTIVE",
+      "tier": 5,
+      "salaryPerMinuteCents": 17500,
+      "efficiency": 2.25,
+      "heatGeneratedPerMin": 0,
+      "heatDissipationPerMin": 20,
+      "sanityDrainRate": 0.05,
+      "durability": 1,
+      "assignedNodeId": null
+    },
+    "benjamin_1788170332582_m3z6": {
+      "id": "benjamin_1788170332582_m3z6",
+      "codename": "BENJAMIN_2582",
+      "role": "BENJAMIN",
+      "status": "ACTIVE",
+      "tier": 5,
+      "salaryPerMinuteCents": 25000,
+      "efficiency": 4,
+      "heatGeneratedPerMin": 12.5,
+      "heatDissipationPerMin": 0,
+      "sanityDrainRate": -0.025,
+      "durability": 1,
+      "assignedNodeId": "node_broadcasting_hub"
+    }
+  },
+  "nodes": {
+    "node_broadcasting_hub": {
+      "id": "node_broadcasting_hub",
+      "name": "Abandoned VHF Station",
+      "tier": 2,
+      "baseYieldPerMinCents": 33000,
+      "upgradeCostCents": 750000,
+      "workerCapacity": 3,
+      "isCompromised": false,
+      "sanityRecoveryRatePerMin": 0.0075
+    },
+    "node_molly_pop": {
+      "id": "node_molly_pop",
+      "name": "Molly Pop Confectionery (Front Store)",
+      "tier": 2,
+      "baseYieldPerMinCents": 26400,
+      "upgradeCostCents": 500000,
+      "workerCapacity": 4,
+      "isCompromised": false,
+      "sanityRecoveryRatePerMin": 0.012
+    },
+    "node_nav_norway": {
+      "id": "node_nav_norway",
+      "name": "NAV Kontor (Norwegian Welfare & Security Hub)",
+      "tier": 3,
+      "baseYieldPerMinCents": 41140,
+      "upgradeCostCents": 937500,
+      "workerCapacity": 4,
+      "isCompromised": false,
+      "sanityRecoveryRatePerMin": 0.0225
+    }
+  },
+  "tapeCatalog": {
+    "tape_001_vhf_leak": {
+      "id": "tape_001_vhf_leak",
+      "title": "VHF-88 Broadcast Intercept [1994]",
+      "category": "SURVEILLANCE_LOG",
+      "rentalCostCents": 10000,
+      "sanityCost": 0.05,
+      "durationSeconds": 120,
+      "potentialYieldCents": 45000,
+      "heatGenerated": 5,
+      "clues": [
+        "CODENAME::ECHELON_ALPHA mentioned at timestamp 04:12",
+        "Frequency band shifted to 142.850 MHz"
+      ],
+      "glitchIntensity": 0.25
+    },
+    "tape_002_black_ledger": {
+      "id": "tape_002_black_ledger",
+      "title": "Offshore Holding Shell Audit #7B",
+      "category": "BLACK_LEDGER",
+      "rentalCostCents": 25000,
+      "sanityCost": 0.12,
+      "durationSeconds": 180,
+      "potentialYieldCents": 120000,
+      "heatGenerated": 12,
+      "clues": [
+        "Bearer bond routing coordinates found in header padding",
+        "Ghost bank account linked to Pacific Haven trust"
+      ],
+      "glitchIntensity": 0.45
+    },
+    "tape_003_deep_sea": {
+      "id": "tape_003_deep_sea",
+      "title": "Deep Sea Hydrophone Anomaly [Abyssal Log]",
+      "category": "SURVEILLANCE_LOG",
+      "rentalCostCents": 18000,
+      "sanityCost": 0.08,
+      "durationSeconds": 150,
+      "potentialYieldCents": 85000,
+      "heatGenerated": 6,
+      "clues": [
+        "Sub-trench acoustic pattern matched secret naval transponder",
+        "Pressure hull telemetry recorded at -10,920m depth"
+      ],
+      "glitchIntensity": 0.35
+    },
+    "tape_004_constellation_relay": {
+      "id": "tape_004_constellation_relay",
+      "title": "Orion Sector Radio Telescope Decrypt",
+      "category": "NUMBER_STATION",
+      "rentalCostCents": 30000,
+      "sanityCost": 0.15,
+      "durationSeconds": 240,
+      "potentialYieldCents": 160000,
+      "heatGenerated": 8,
+      "clues": [
+        "Star chart coordinates align with offshore broadcast beacon",
+        "Binary burst synchronized with UTC sidereal time"
+      ],
+      "glitchIntensity": 0.5
+    },
+    "tape_005_nav_archive": {
+      "id": "tape_005_nav_archive",
+      "title": "NAV Oslo Sentrum - Encrypted Benefit Archive [1999]",
+      "category": "BLACK_LEDGER",
+      "rentalCostCents": 14000,
+      "sanityCost": 0.05,
+      "durationSeconds": 160,
+      "potentialYieldCents": 75000,
+      "heatGenerated": 4,
+      "clues": [
+        "Kommune subsidy ledger reveals untraced offshore deposit",
+        "Folketrygden digital mainframe key located at BankID backup node"
+      ],
+      "glitchIntensity": 0.3
+    }
+  },
+  "activeRentals": {
+    "tape_001_vhf_leak": {
+      "tapeId": "tape_001_vhf_leak",
+      "rentedAtEpochMs": 1788169985850,
+      "expiresAtEpochMs": 1788170105850,
+      "remainingSeconds": 115.64,
+      "status": "DECODED",
+      "progressPercent": 100
+    },
+    "tape_002_black_ledger": {
+      "tapeId": "tape_002_black_ledger",
+      "rentedAtEpochMs": 1788170004045,
+      "expiresAtEpochMs": 1788170184045,
+      "remainingSeconds": 172.931,
+      "status": "DECODED",
+      "progressPercent": 100
+    },
+    "tape_003_deep_sea": {
+      "tapeId": "tape_003_deep_sea",
+      "rentedAtEpochMs": 1788170013822,
+      "expiresAtEpochMs": 1788170163822,
+      "remainingSeconds": 142.071,
+      "status": "DECODED",
+      "progressPercent": 100
+    },
+    "tape_004_constellation_relay": {
+      "tapeId": "tape_004_constellation_relay",
+      "rentedAtEpochMs": 1788170028488,
+      "expiresAtEpochMs": 1788170268488,
+      "remainingSeconds": 236.792,
+      "status": "DECODED",
+      "progressPercent": 100
+    },
+    "tape_005_nav_archive": {
+      "tapeId": "tape_005_nav_archive",
+      "rentedAtEpochMs": 1788170043905,
+      "expiresAtEpochMs": 1788170203905,
+      "remainingSeconds": 154.104,
+      "status": "DECODED",
+      "progressPercent": 100
+    }
+  },
+  "investments": {
+    "inv_baby_suite": {
+      "id": "inv_baby_suite",
+      "title": "Designer Nursery & Baby Luxe Suite",
+      "category": "FAMILY_WISHLIST",
+      "costCents": 250000,
+      "sanityBoost": 0.35,
+      "passiveYieldPerMinCents": 0,
+      "heatReduction": 10,
+      "description": "Custom handcrafted crib, organic nursery essentials, and soothing ambient lullaby acoustics for the baby.",
+      "isPurchased": false
+    },
+    "inv_sound_studio": {
+      "id": "inv_sound_studio",
+      "title": "Underground Sound Studio & Record Label",
+      "category": "VENTURE_BUSINESS",
+      "costCents": 500000,
+      "sanityBoost": 0.15,
+      "passiveYieldPerMinCents": 45000,
+      "heatReduction": 0,
+      "description": "Analog SSL mixing console, vintage Neumann microphones, and independent tape production mastering suite.",
+      "isPurchased": false
+    },
+    "inv_vintage_supercar": {
+      "id": "inv_vintage_supercar",
+      "title": "Vintage 1990s Testarossa Supercar",
+      "category": "LUXURY_TROPHY",
+      "costCents": 1200000,
+      "sanityBoost": 0.25,
+      "passiveYieldPerMinCents": 0,
+      "heatReduction": 0,
+      "description": "Rosso Corsa finish, gated 5-speed manual, pop-up headlights, and pristine midnight cruiser status.",
+      "isPurchased": false
+    },
+    "inv_diamond_chain": {
+      "id": "inv_diamond_chain",
+      "title": "Custom Iced-Out Cuban Link Chain",
+      "category": "STATUS_ASSET",
+      "costCents": 800000,
+      "sanityBoost": 0.15,
+      "passiveYieldPerMinCents": 0,
+      "heatReduction": 0,
+      "description": "Flawless VVS baguette stones with solid 18k white gold interlocking links.",
+      "isPurchased": true
+    },
+    "inv_vip_club": {
+      "id": "inv_vip_club",
+      "title": "Subterranean VIP Lounge & Nightclub",
+      "category": "VENTURE_BUSINESS",
+      "costCents": 2500000,
+      "sanityBoost": 0.1,
+      "passiveYieldPerMinCents": 180000,
+      "heatReduction": 0,
+      "description": "Soundproof basement lounge with private booths, bottle service, and steady weekend cash flow.",
+      "isPurchased": false
+    },
+    "inv_space_satellite": {
+      "id": "inv_space_satellite",
+      "title": "Orbital Private Satellite Relay Station",
+      "category": "VENTURE_BUSINESS",
+      "costCents": 10000000,
+      "sanityBoost": 0.3,
+      "passiveYieldPerMinCents": 850000,
+      "heatReduction": 20,
+      "description": "Dedicated low-earth-orbit transponder for global high-frequency encryption and untraceable data leasing.",
+      "isPurchased": false
+    }
+  },
+  "pharmacyInventory": {
+    "prod_ibuprofen_400": {
+      "id": "prod_ibuprofen_400",
+      "name": "Ibuprofen 400mg (20-Pack)",
+      "category": "OVER_THE_COUNTER",
+      "wholesaleCostCents": 350,
+      "retailPriceCents": 899,
+      "stockQuantity": 0,
+      "qualityRating": 5,
+      "description": "Standard anti-inflammatory pain relief medication (NSAID)."
+    },
+    "prod_amoxicillin_500": {
+      "id": "prod_amoxicillin_500",
+      "name": "Amoxicillin 500mg Capsules",
+      "category": "PRESCRIPTION_WELLNESS",
+      "wholesaleCostCents": 850,
+      "retailPriceCents": 2499,
+      "stockQuantity": 0,
+      "qualityRating": 5,
+      "description": "Broad-spectrum beta-lactam antibiotic for bacterial infections."
+    },
+    "prod_multivitamin_complex": {
+      "id": "prod_multivitamin_complex",
+      "name": "Vitamin B-Complex & Zinc Elixir",
+      "category": "VITAMINS_SUPPLEMENTS",
+      "wholesaleCostCents": 500,
+      "retailPriceCents": 1450,
+      "stockQuantity": 0,
+      "qualityRating": 5,
+      "description": "Daily cellular energy booster and immune support multivitamin formula."
+    },
+    "prod_antiseptic_kit": {
+      "id": "prod_antiseptic_kit",
+      "name": "Emergency Surgical Dressing & Antiseptic",
+      "category": "FIRST_AID",
+      "wholesaleCostCents": 600,
+      "retailPriceCents": 1799,
+      "stockQuantity": 0,
+      "qualityRating": 4,
+      "description": "Sterile trauma dressing pads and povidone-iodine antiseptic solution."
+    }
+  },
+  "blackMarketInventory": {
+    "comm_neuro_stimulant": {
+      "id": "comm_neuro_stimulant",
+      "name": "Class-IV Cognitive Neuro-Stimulant",
+      "codename": "SYNTH_SPEED_01",
+      "tier": 2,
+      "wholesaleCostCents": 4500,
+      "retailPriceCents": 12000,
+      "stockUnits": 0,
+      "heatGeneratedPerSale": 1.2,
+      "customerDemandRate": 4,
+      "description": "High-potency synthesized cognitive enhancer yielding rapid cash turnover with legal exposure."
+    },
+    "comm_botanical_resin": {
+      "id": "comm_botanical_resin",
+      "name": "High-Altitude Concentrated Herbal Resin",
+      "codename": "BLACK_HASH_RESIN",
+      "tier": 1,
+      "wholesaleCostCents": 2000,
+      "retailPriceCents": 5500,
+      "stockUnits": 0,
+      "heatGeneratedPerSale": 0.6,
+      "customerDemandRate": 6,
+      "description": "Traditional compressed aromatic botanical extract with broad street demand."
+    },
+    "comm_clinical_tranquilizer": {
+      "id": "comm_clinical_tranquilizer",
+      "name": "Clinical Sedative Compound (Blister Strip)",
+      "codename": "BENZO_TRANQ_90",
+      "tier": 2,
+      "wholesaleCostCents": 6000,
+      "retailPriceCents": 15000,
+      "stockUnits": 0,
+      "heatGeneratedPerSale": 1.8,
+      "customerDemandRate": 3,
+      "description": "Prescription-grade neuro-inhibitor traded in underground clinic channels."
+    },
+    "comm_mycelial_alkaloid": {
+      "id": "comm_mycelial_alkaloid",
+      "name": "Purified Botanical Neuro-Alkaloid",
+      "codename": "MYCELIAL_SPORE_EXTRACT",
+      "tier": 1,
+      "wholesaleCostCents": 3500,
+      "retailPriceCents": 9500,
+      "stockUnits": 0,
+      "heatGeneratedPerSale": 0.8,
+      "customerDemandRate": 5,
+      "description": "Refined natural psychedelic alkaloid extract popular among underground creative circuits."
+    }
+  },
+  "customerSatisfaction": {
+    "satisfactionScore": 0.7744882960083316,
+    "loyaltyTier": "GOLD",
+    "totalCustomersServed": 2020,
+    "stockoutPenaltyCount": 2736
+  },
+  "unlockedClues": [
+    "CODENAME::ECHELON_ALPHA mentioned at timestamp 04:12",
+    "Frequency band shifted to 142.850 MHz",
+    "Bearer bond routing coordinates found in header padding",
+    "Ghost bank account linked to Pacific Haven trust",
+    "Sub-trench acoustic pattern matched secret naval transponder",
+    "Pressure hull telemetry recorded at -10,920m depth",
+    "Star chart coordinates align with offshore broadcast beacon",
+    "Binary burst synchronized with UTC sidereal time",
+    "Kommune subsidy ledger reveals untraced offshore deposit",
+    "Folketrygden digital mainframe key located at BankID backup node"
+  ],
+  "runtime": {
+    "lastTickEpochMs": 1788170364241,
+    "totalTicksElapsed": 1159,
+    "isRaidActive": false,
+    "isClockSkewed": false,
+    "unresolvedAlerts": [
+      {
+        "id": "alert_decode_1788169990354",
+        "type": "DECRYPTION_SUCCESS",
+        "message": "Decrypted tape [VHF-88 Broadcast Intercept [1994]]! Yield: +$450.00",
+        "timestamp": 1788169990354,
+        "severity": "INFO"
+      },
+      {
+        "id": "alert_decode_1788170011304",
+        "type": "DECRYPTION_SUCCESS",
+        "message": "Decrypted tape [Offshore Holding Shell Audit #7B]! Yield: +$1200.00",
+        "timestamp": 1788170011304,
+        "severity": "INFO"
+      },
+      {
+        "id": "alert_raid_1788170013957",
+        "type": "POLICE_RAID",
+        "message": "CRITICAL: Surveillance breached! Police raid in progress!",
+        "timestamp": 1788170013957,
+        "severity": "CRITICAL"
+      },
+      {
+        "id": "alert_decode_1788170022071",
+        "type": "DECRYPTION_SUCCESS",
+        "message": "Decrypted tape [Deep Sea Hydrophone Anomaly [Abyssal Log]]! Yield: +$850.00",
+        "timestamp": 1788170022071,
+        "severity": "INFO"
+      },
+      {
+        "id": "alert_decode_1788170031916",
+        "type": "DECRYPTION_SUCCESS",
+        "message": "Decrypted tape [Orion Sector Radio Telescope Decrypt]! Yield: +$1600.00",
+        "timestamp": 1788170031916,
+        "severity": "INFO"
+      },
+      {
+        "id": "alert_decode_1788170050098",
+        "type": "DECRYPTION_SUCCESS",
+        "message": "Decrypted tape [NAV Oslo Sentrum - Encrypted Benefit Archive [1999]]! Yield: +$750.00",
+        "timestamp": 1788170050098,
+        "severity": "INFO"
+      },
+      {
+        "id": "alert_restock_1788170064542",
+        "type": "PHARMACY_RESTOCKED",
+        "message": "Restocked 10x [Ibuprofen 400mg (20-Pack)] for $35.00",
+        "timestamp": 1788170064542,
+        "severity": "INFO"
+      },
+      {
+        "id": "alert_restock_1788170064850",
+        "type": "PHARMACY_RESTOCKED",
+        "message": "Restocked 10x [Ibuprofen 400mg (20-Pack)] for $35.00",
+        "timestamp": 1788170064850,
+        "severity": "INFO"
+      },
+      {
+        "id": "alert_restock_1788170065269",
+        "type": "PHARMACY_RESTOCKED",
+        "message": "Restocked 10x [Ibuprofen 400mg (20-Pack)] for $35.00",
+        "timestamp": 1788170065269,
+        "severity": "INFO"
+      },
+      {
+        "id": "alert_restock_1788170065660",
+        "type": "PHARMACY_RESTOCKED",
+        "message": "Restocked 10x [Ibuprofen 400mg (20-Pack)] for $35.00",
+        "timestamp": 1788170065660,
+        "severity": "INFO"
+      },
+      {
+        "id": "alert_restock_1788170065834",
+        "type": "PHARMACY_RESTOCKED",
+        "message": "Restocked 10x [Ibuprofen 400mg (20-Pack)] for $35.00",
+        "timestamp": 1788170065834,
+        "severity": "INFO"
+      },
+      {
+        "id": "alert_restock_1788170066043",
+        "type": "PHARMACY_RESTOCKED",
+        "message": "Restocked 10x [Ibuprofen 400mg (20-Pack)] for $35.00",
+        "timestamp": 1788170066043,
+        "severity": "INFO"
+      },
+      {
+        "id": "alert_restock_1788170066214",
+        "type": "PHARMACY_RESTOCKED",
+        "message": "Restocked 10x [Ibuprofen 400mg (20-Pack)] for $35.00",
+        "timestamp": 1788170066214,
+        "severity": "INFO"
+      },
+      {
+        "id": "alert_restock_1788170066401",
+        "type": "PHARMACY_RESTOCKED",
+        "message": "Restocked 10x [Ibuprofen 400mg (20-Pack)] for $35.00",
+        "timestamp": 1788170066401,
+        "severity": "INFO"
+      },
+      {
+        "id": "alert_restock_1788170066575",
+        "type": "PHARMACY_RESTOCKED",
+        "message": "Restocked 10x [Ibuprofen 400mg (20-Pack)] for $35.00",
+        "timestamp": 1788170066575,
+        "severity": "INFO"
+      },
+      {
+        "id": "alert_restock_1788170066792",
+        "type": "PHARMACY_RESTOCKED",
+        "message": "Restocked 10x [Ibuprofen 400mg (20-Pack)] for $35.00",
+        "timestamp": 1788170066792,
+        "severity": "INFO"
+      },
+      {
+        "id": "alert_restock_1788170066945",
+        "type": "PHARMACY_RESTOCKED",
+        "message": "Restocked 10x [Ibuprofen 400mg (20-Pack)] for $35.00",
+        "timestamp": 1788170066945,
+        "severity": "INFO"
+      },
+      {
+        "id": "alert_restock_1788170070642",
+        "type": "PHARMACY_RESTOCKED",
+        "message": "Restocked 10x [Amoxicillin 500mg Capsules] for $85.00",
+        "timestamp": 1788170070642,
+        "severity": "INFO"
+      },
+      {
+        "id": "alert_restock_1788170070811",
+        "type": "PHARMACY_RESTOCKED",
+        "message": "Restocked 10x [Amoxicillin 500mg Capsules] for $85.00",
+        "timestamp": 1788170070811,
+        "severity": "INFO"
+      },
+      {
+        "id": "alert_restock_1788170070994",
+        "type": "PHARMACY_RESTOCKED",
+        "message": "Restocked 10x [Amoxicillin 500mg Capsules] for $85.00",
+        "timestamp": 1788170070994,
+        "severity": "INFO"
+      },
+      {
+        "id": "alert_restock_1788170071159",
+        "type": "PHARMACY_RESTOCKED",
+        "message": "Restocked 10x [Amoxicillin 500mg Capsules] for $85.00",
+        "timestamp": 1788170071159,
+        "severity": "INFO"
+      },
+      {
+        "id": "alert_restock_1788170071336",
+        "type": "PHARMACY_RESTOCKED",
+        "message": "Restocked 10x [Amoxicillin 500mg Capsules] for $85.00",
+        "timestamp": 1788170071336,
+        "severity": "INFO"
+      },
+      {
+        "id": "alert_restock_1788170071519",
+        "type": "PHARMACY_RESTOCKED",
+        "message": "Restocked 10x [Amoxicillin 500mg Capsules] for $85.00",
+        "timestamp": 1788170071519,
+        "severity": "INFO"
+      },
+      {
+        "id": "alert_restock_1788170071692",
+        "type": "PHARMACY_RESTOCKED",
+        "message": "Restocked 10x [Amoxicillin 500mg Capsules] for $85.00",
+        "timestamp": 1788170071692,
+        "severity": "INFO"
+      },
+      {
+        "id": "alert_restock_1788170071853",
+        "type": "PHARMACY_RESTOCKED",
+        "message": "Restocked 10x [Amoxicillin 500mg Capsules] for $85.00",
+        "timestamp": 1788170071853,
+        "severity": "INFO"
+      },
+      {
+        "id": "alert_restock_1788170072739",
+        "type": "PHARMACY_RESTOCKED",
+        "message": "Restocked 10x [Amoxicillin 500mg Capsules] for $85.00",
+        "timestamp": 1788170072739,
+        "severity": "INFO"
+      },
+      {
+        "id": "alert_restock_1788170073425",
+        "type": "PHARMACY_RESTOCKED",
+        "message": "Restocked 10x [Amoxicillin 500mg Capsules] for $85.00",
+        "timestamp": 1788170073425,
+        "severity": "INFO"
+      },
+      {
+        "id": "alert_restock_1788170074513",
+        "type": "PHARMACY_RESTOCKED",
+        "message": "Restocked 10x [Vitamin B-Complex & Zinc Elixir] for $50.00",
+        "timestamp": 1788170074513,
+        "severity": "INFO"
+      },
+      {
+        "id": "alert_restock_1788170074847",
+        "type": "PHARMACY_RESTOCKED",
+        "message": "Restocked 10x [Vitamin B-Complex & Zinc Elixir] for $50.00",
+        "timestamp": 1788170074847,
+        "severity": "INFO"
+      },
+      {
+        "id": "alert_restock_1788170075196",
+        "type": "PHARMACY_RESTOCKED",
+        "message": "Restocked 10x [Vitamin B-Complex & Zinc Elixir] for $50.00",
+        "timestamp": 1788170075196,
+        "severity": "INFO"
+      },
+      {
+        "id": "alert_restock_1788170076298",
+        "type": "PHARMACY_RESTOCKED",
+        "message": "Restocked 10x [Vitamin B-Complex & Zinc Elixir] for $50.00",
+        "timestamp": 1788170076298,
+        "severity": "INFO"
+      },
+      {
+        "id": "alert_restock_1788170076528",
+        "type": "PHARMACY_RESTOCKED",
+        "message": "Restocked 10x [Vitamin B-Complex & Zinc Elixir] for $50.00",
+        "timestamp": 1788170076528,
+        "severity": "INFO"
+      },
+      {
+        "id": "alert_restock_1788170076713",
+        "type": "PHARMACY_RESTOCKED",
+        "message": "Restocked 10x [Vitamin B-Complex & Zinc Elixir] for $50.00",
+        "timestamp": 1788170076713,
+        "severity": "INFO"
+      },
+      {
+        "id": "alert_restock_1788170076901",
+        "type": "PHARMACY_RESTOCKED",
+        "message": "Restocked 10x [Vitamin B-Complex & Zinc Elixir] for $50.00",
+        "timestamp": 1788170076901,
+        "severity": "INFO"
+      },
+      {
+        "id": "alert_restock_1788170079448",
+        "type": "PHARMACY_RESTOCKED",
+        "message": "Restocked 10x [Emergency Surgical Dressing & Antiseptic] for $60.00",
+        "timestamp": 1788170079448,
+        "severity": "INFO"
+      },
+      {
+        "id": "alert_restock_1788170079742",
+        "type": "PHARMACY_RESTOCKED",
+        "message": "Restocked 10x [Emergency Surgical Dressing & Antiseptic] for $60.00",
+        "timestamp": 1788170079742,
+        "severity": "INFO"
+      },
+      {
+        "id": "alert_restock_1788170080151",
+        "type": "PHARMACY_RESTOCKED",
+        "message": "Restocked 10x [Emergency Surgical Dressing & Antiseptic] for $60.00",
+        "timestamp": 1788170080151,
+        "severity": "INFO"
+      },
+      {
+        "id": "alert_restock_1788170080554",
+        "type": "PHARMACY_RESTOCKED",
+        "message": "Restocked 10x [Emergency Surgical Dressing & Antiseptic] for $60.00",
+        "timestamp": 1788170080554,
+        "severity": "INFO"
+      },
+      {
+        "id": "alert_restock_1788170080769",
+        "type": "PHARMACY_RESTOCKED",
+        "message": "Restocked 10x [Emergency Surgical Dressing & Antiseptic] for $60.00",
+        "timestamp": 1788170080769,
+        "severity": "INFO"
+      },
+      {
+        "id": "alert_restock_1788170080963",
+        "type": "PHARMACY_RESTOCKED",
+        "message": "Restocked 10x [Emergency Surgical Dressing & Antiseptic] for $60.00",
+        "timestamp": 1788170080963,
+        "severity": "INFO"
+      },
+      {
+        "id": "alert_restock_1788170081145",
+        "type": "PHARMACY_RESTOCKED",
+        "message": "Restocked 10x [Emergency Surgical Dressing & Antiseptic] for $60.00",
+        "timestamp": 1788170081145,
+        "severity": "INFO"
+      },
+      {
+        "id": "alert_restock_1788170081336",
+        "type": "PHARMACY_RESTOCKED",
+        "message": "Restocked 10x [Emergency Surgical Dressing & Antiseptic] for $60.00",
+        "timestamp": 1788170081336,
+        "severity": "INFO"
+      },
+      {
+        "id": "alert_restock_1788170081538",
+        "type": "PHARMACY_RESTOCKED",
+        "message": "Restocked 10x [Emergency Surgical Dressing & Antiseptic] for $60.00",
+        "timestamp": 1788170081538,
+        "severity": "INFO"
+      },
+      {
+        "id": "alert_restock_1788170081938",
+        "type": "PHARMACY_RESTOCKED",
+        "message": "Restocked 10x [Emergency Surgical Dressing & Antiseptic] for $60.00",
+        "timestamp": 1788170081938,
+        "severity": "INFO"
+      },
+      {
+        "id": "alert_restock_1788170083059",
+        "type": "PHARMACY_RESTOCKED",
+        "message": "Restocked 10x [Vitamin B-Complex & Zinc Elixir] for $50.00",
+        "timestamp": 1788170083059,
+        "severity": "INFO"
+      },
+      {
+        "id": "alert_restock_1788170083298",
+        "type": "PHARMACY_RESTOCKED",
+        "message": "Restocked 10x [Vitamin B-Complex & Zinc Elixir] for $50.00",
+        "timestamp": 1788170083298,
+        "severity": "INFO"
+      },
+      {
+        "id": "alert_restock_1788170108596",
+        "type": "PHARMACY_RESTOCKED",
+        "message": "Restocked 10x [Ibuprofen 400mg (20-Pack)] for $35.00",
+        "timestamp": 1788170108596,
+        "severity": "INFO"
+      },
+      {
+        "id": "alert_restock_1788170109221",
+        "type": "PHARMACY_RESTOCKED",
+        "message": "Restocked 10x [Ibuprofen 400mg (20-Pack)] for $35.00",
+        "timestamp": 1788170109221,
+        "severity": "INFO"
+      },
+      {
+        "id": "alert_restock_1788170109574",
+        "type": "PHARMACY_RESTOCKED",
+        "message": "Restocked 10x [Ibuprofen 400mg (20-Pack)] for $35.00",
+        "timestamp": 1788170109574,
+        "severity": "INFO"
+      },
+      {
+        "id": "alert_restock_1788170110331",
+        "type": "PHARMACY_RESTOCKED",
+        "message": "Restocked 10x [Ibuprofen 400mg (20-Pack)] for $35.00",
+        "timestamp": 1788170110331,
+        "severity": "INFO"
+      },
+      {
+        "id": "alert_restock_1788170110711",
+        "type": "PHARMACY_RESTOCKED",
+        "message": "Restocked 10x [Ibuprofen 400mg (20-Pack)] for $35.00",
+        "timestamp": 1788170110711,
+        "severity": "INFO"
+      },
+      {
+        "id": "alert_restock_1788170110909",
+        "type": "PHARMACY_RESTOCKED",
+        "message": "Restocked 10x [Ibuprofen 400mg (20-Pack)] for $35.00",
+        "timestamp": 1788170110909,
+        "severity": "INFO"
+      },
+      {
+        "id": "alert_restock_1788170111114",
+        "type": "PHARMACY_RESTOCKED",
+        "message": "Restocked 10x [Ibuprofen 400mg (20-Pack)] for $35.00",
+        "timestamp": 1788170111114,
+        "severity": "INFO"
+      },
+      {
+        "id": "alert_restock_1788170111320",
+        "type": "PHARMACY_RESTOCKED",
+        "message": "Restocked 10x [Ibuprofen 400mg (20-Pack)] for $35.00",
+        "timestamp": 1788170111320,
+        "severity": "INFO"
+      },
+      {
+        "id": "alert_restock_1788170111716",
+        "type": "PHARMACY_RESTOCKED",
+        "message": "Restocked 10x [Ibuprofen 400mg (20-Pack)] for $35.00",
+        "timestamp": 1788170111716,
+        "severity": "INFO"
+      },
+      {
+        "id": "alert_restock_1788170112177",
+        "type": "PHARMACY_RESTOCKED",
+        "message": "Restocked 10x [Ibuprofen 400mg (20-Pack)] for $35.00",
+        "timestamp": 1788170112177,
+        "severity": "INFO"
+      },
+      {
+        "id": "alert_restock_1788170112351",
+        "type": "PHARMACY_RESTOCKED",
+        "message": "Restocked 10x [Ibuprofen 400mg (20-Pack)] for $35.00",
+        "timestamp": 1788170112351,
+        "severity": "INFO"
+      },
+      {
+        "id": "alert_restock_1788170112540",
+        "type": "PHARMACY_RESTOCKED",
+        "message": "Restocked 10x [Ibuprofen 400mg (20-Pack)] for $35.00",
+        "timestamp": 1788170112540,
+        "severity": "INFO"
+      },
+      {
+        "id": "alert_restock_1788170112724",
+        "type": "PHARMACY_RESTOCKED",
+        "message": "Restocked 10x [Ibuprofen 400mg (20-Pack)] for $35.00",
+        "timestamp": 1788170112724,
+        "severity": "INFO"
+      },
+      {
+        "id": "alert_restock_1788170114102",
+        "type": "PHARMACY_RESTOCKED",
+        "message": "Restocked 10x [Amoxicillin 500mg Capsules] for $85.00",
+        "timestamp": 1788170114102,
+        "severity": "INFO"
+      },
+      {
+        "id": "alert_restock_1788170114643",
+        "type": "PHARMACY_RESTOCKED",
+        "message": "Restocked 10x [Amoxicillin 500mg Capsules] for $85.00",
+        "timestamp": 1788170114643,
+        "severity": "INFO"
+      },
+      {
+        "id": "alert_restock_1788170114835",
+        "type": "PHARMACY_RESTOCKED",
+        "message": "Restocked 10x [Amoxicillin 500mg Capsules] for $85.00",
+        "timestamp": 1788170114835,
+        "severity": "INFO"
+      },
+      {
+        "id": "alert_restock_1788170116593",
+        "type": "PHARMACY_RESTOCKED",
+        "message": "Restocked 10x [Amoxicillin 500mg Capsules] for $85.00",
+        "timestamp": 1788170116593,
+        "severity": "INFO"
+      },
+      {
+        "id": "alert_restock_1788170116780",
+        "type": "PHARMACY_RESTOCKED",
+        "message": "Restocked 10x [Amoxicillin 500mg Capsules] for $85.00",
+        "timestamp": 1788170116780,
+        "severity": "INFO"
+      },
+      {
+        "id": "alert_restock_1788170116989",
+        "type": "PHARMACY_RESTOCKED",
+        "message": "Restocked 10x [Amoxicillin 500mg Capsules] for $85.00",
+        "timestamp": 1788170116989,
+        "severity": "INFO"
+      },
+      {
+        "id": "alert_restock_1788170117791",
+        "type": "PHARMACY_RESTOCKED",
+        "message": "Restocked 10x [Amoxicillin 500mg Capsules] for $85.00",
+        "timestamp": 1788170117791,
+        "severity": "INFO"
+      },
+      {
+        "id": "alert_restock_1788170118007",
+        "type": "PHARMACY_RESTOCKED",
+        "message": "Restocked 10x [Amoxicillin 500mg Capsules] for $85.00",
+        "timestamp": 1788170118007,
+        "severity": "INFO"
+      },
+      {
+        "id": "alert_restock_1788170118215",
+        "type": "PHARMACY_RESTOCKED",
+        "message": "Restocked 10x [Amoxicillin 500mg Capsules] for $85.00",
+        "timestamp": 1788170118215,
+        "severity": "INFO"
+      },
+      {
+        "id": "alert_restock_1788170118415",
+        "type": "PHARMACY_RESTOCKED",
+        "message": "Restocked 10x [Amoxicillin 500mg Capsules] for $85.00",
+        "timestamp": 1788170118415,
+        "severity": "INFO"
+      },
+      {
+        "id": "alert_restock_1788170118814",
+        "type": "PHARMACY_RESTOCKED",
+        "message": "Restocked 10x [Amoxicillin 500mg Capsules] for $85.00",
+        "timestamp": 1788170118814,
+        "severity": "INFO"
+      },
+      {
+        "id": "alert_restock_1788170119548",
+        "type": "PHARMACY_RESTOCKED",
+        "message": "Restocked 10x [Vitamin B-Complex & Zinc Elixir] for $50.00",
+        "timestamp": 1788170119548,
+        "severity": "INFO"
+      },
+      {
+        "id": "alert_restock_1788170120928",
+        "type": "PHARMACY_RESTOCKED",
+        "message": "Restocked 10x [Vitamin B-Complex & Zinc Elixir] for $50.00",
+        "timestamp": 1788170120928,
+        "severity": "INFO"
+      },
+      {
+        "id": "alert_restock_1788170121690",
+        "type": "PHARMACY_RESTOCKED",
+        "message": "Restocked 10x [Vitamin B-Complex & Zinc Elixir] for $50.00",
+        "timestamp": 1788170121690,
+        "severity": "INFO"
+      },
+      {
+        "id": "alert_restock_1788170121902",
+        "type": "PHARMACY_RESTOCKED",
+        "message": "Restocked 10x [Vitamin B-Complex & Zinc Elixir] for $50.00",
+        "timestamp": 1788170121902,
+        "severity": "INFO"
+      },
+      {
+        "id": "alert_restock_1788170122310",
+        "type": "PHARMACY_RESTOCKED",
+        "message": "Restocked 10x [Vitamin B-Complex & Zinc Elixir] for $50.00",
+        "timestamp": 1788170122310,
+        "severity": "INFO"
+      },
+      {
+        "id": "alert_restock_1788170122729",
+        "type": "PHARMACY_RESTOCKED",
+        "message": "Restocked 10x [Vitamin B-Complex & Zinc Elixir] for $50.00",
+        "timestamp": 1788170122729,
+        "severity": "INFO"
+      },
+      {
+        "id": "alert_restock_1788170123157",
+        "type": "PHARMACY_RESTOCKED",
+        "message": "Restocked 10x [Vitamin B-Complex & Zinc Elixir] for $50.00",
+        "timestamp": 1788170123157,
+        "severity": "INFO"
+      },
+      {
+        "id": "alert_restock_1788170123349",
+        "type": "PHARMACY_RESTOCKED",
+        "message": "Restocked 10x [Vitamin B-Complex & Zinc Elixir] for $50.00",
+        "timestamp": 1788170123349,
+        "severity": "INFO"
+      },
+      {
+        "id": "alert_restock_1788170123726",
+        "type": "PHARMACY_RESTOCKED",
+        "message": "Restocked 10x [Vitamin B-Complex & Zinc Elixir] for $50.00",
+        "timestamp": 1788170123726,
+        "severity": "INFO"
+      },
+      {
+        "id": "alert_restock_1788170125151",
+        "type": "PHARMACY_RESTOCKED",
+        "message": "Restocked 10x [Emergency Surgical Dressing & Antiseptic] for $60.00",
+        "timestamp": 1788170125151,
+        "severity": "INFO"
+      },
+      {
+        "id": "alert_restock_1788170125987",
+        "type": "PHARMACY_RESTOCKED",
+        "message": "Restocked 10x [Emergency Surgical Dressing & Antiseptic] for $60.00",
+        "timestamp": 1788170125987,
+        "severity": "INFO"
+      },
+      {
+        "id": "alert_restock_1788170126155",
+        "type": "PHARMACY_RESTOCKED",
+        "message": "Restocked 10x [Emergency Surgical Dressing & Antiseptic] for $60.00",
+        "timestamp": 1788170126155,
+        "severity": "INFO"
+      },
+      {
+        "id": "alert_restock_1788170126346",
+        "type": "PHARMACY_RESTOCKED",
+        "message": "Restocked 10x [Emergency Surgical Dressing & Antiseptic] for $60.00",
+        "timestamp": 1788170126346,
+        "severity": "INFO"
+      },
+      {
+        "id": "alert_restock_1788170126605",
+        "type": "PHARMACY_RESTOCKED",
+        "message": "Restocked 10x [Emergency Surgical Dressing & Antiseptic] for $60.00",
+        "timestamp": 1788170126605,
+        "severity": "INFO"
+      },
+      {
+        "id": "alert_restock_1788170127030",
+        "type": "PHARMACY_RESTOCKED",
+        "message": "Restocked 10x [Emergency Surgical Dressing & Antiseptic] for $60.00",
+        "timestamp": 1788170127030,
+        "severity": "INFO"
+      },
+      {
+        "id": "alert_restock_1788170127235",
+        "type": "PHARMACY_RESTOCKED",
+        "message": "Restocked 10x [Emergency Surgical Dressing & Antiseptic] for $60.00",
+        "timestamp": 1788170127235,
+        "severity": "INFO"
+      },
+      {
+        "id": "alert_restock_1788170127434",
+        "type": "PHARMACY_RESTOCKED",
+        "message": "Restocked 10x [Emergency Surgical Dressing & Antiseptic] for $60.00",
+        "timestamp": 1788170127434,
+        "severity": "INFO"
+      },
+      {
+        "id": "alert_restock_1788170127653",
+        "type": "PHARMACY_RESTOCKED",
+        "message": "Restocked 10x [Emergency Surgical Dressing & Antiseptic] for $60.00",
+        "timestamp": 1788170127653,
+        "severity": "INFO"
+      },
+      {
+        "id": "alert_restock_1788170128008",
+        "type": "PHARMACY_RESTOCKED",
+        "message": "Restocked 10x [Emergency Surgical Dressing & Antiseptic] for $60.00",
+        "timestamp": 1788170128008,
+        "severity": "INFO"
+      },
+      {
+        "id": "alert_restock_1788170129089",
+        "type": "PHARMACY_RESTOCKED",
+        "message": "Restocked 10x [Emergency Surgical Dressing & Antiseptic] for $60.00",
+        "timestamp": 1788170129089,
+        "severity": "INFO"
+      },
+      {
+        "id": "alert_restock_1788170157728",
+        "type": "PHARMACY_RESTOCKED",
+        "message": "Restocked 10x [Ibuprofen 400mg (20-Pack)] for $35.00",
+        "timestamp": 1788170157728,
+        "severity": "INFO"
+      },
+      {
+        "id": "alert_restock_1788170158987",
+        "type": "PHARMACY_RESTOCKED",
+        "message": "Restocked 10x [Ibuprofen 400mg (20-Pack)] for $35.00",
+        "timestamp": 1788170158987,
+        "severity": "INFO"
+      },
+      {
+        "id": "alert_restock_1788170159232",
+        "type": "PHARMACY_RESTOCKED",
+        "message": "Restocked 10x [Ibuprofen 400mg (20-Pack)] for $35.00",
+        "timestamp": 1788170159232,
+        "severity": "INFO"
+      },
+      {
+        "id": "alert_restock_1788170159478",
+        "type": "PHARMACY_RESTOCKED",
+        "message": "Restocked 10x [Ibuprofen 400mg (20-Pack)] for $35.00",
+        "timestamp": 1788170159478,
+        "severity": "INFO"
+      },
+      {
+        "id": "alert_restock_1788170159937",
+        "type": "PHARMACY_RESTOCKED",
+        "message": "Restocked 10x [Ibuprofen 400mg (20-Pack)] for $35.00",
+        "timestamp": 1788170159937,
+        "severity": "INFO"
+      },
+      {
+        "id": "alert_restock_1788170160179",
+        "type": "PHARMACY_RESTOCKED",
+        "message": "Restocked 10x [Ibuprofen 400mg (20-Pack)] for $35.00",
+        "timestamp": 1788170160179,
+        "severity": "INFO"
+      },
+      {
+        "id": "alert_restock_1788170161043",
+        "type": "PHARMACY_RESTOCKED",
+        "message": "Restocked 10x [Ibuprofen 400mg (20-Pack)] for $35.00",
+        "timestamp": 1788170161043,
+        "severity": "INFO"
+      },
+      {
+        "id": "alert_restock_1788170161291",
+        "type": "PHARMACY_RESTOCKED",
+        "message": "Restocked 10x [Ibuprofen 400mg (20-Pack)] for $35.00",
+        "timestamp": 1788170161291,
+        "severity": "INFO"
+      },
+      {
+        "id": "alert_inv_1788170179784",
+        "type": "INVESTMENT_ACQUIRED",
+        "message": "Acquired [Custom Iced-Out Cuban Link Chain]! (+15% sanity clarity)",
+        "timestamp": 1788170179784,
+        "severity": "INFO"
+      },
+      {
+        "id": "alert_restock_1788170227283",
+        "type": "PHARMACY_RESTOCKED",
+        "message": "Restocked 10x [Ibuprofen 400mg (20-Pack)] for $35.00",
+        "timestamp": 1788170227283,
+        "severity": "INFO"
+      },
+      {
+        "id": "alert_restock_1788170228037",
+        "type": "PHARMACY_RESTOCKED",
+        "message": "Restocked 10x [Ibuprofen 400mg (20-Pack)] for $35.00",
+        "timestamp": 1788170228037,
+        "severity": "INFO"
+      },
+      {
+        "id": "alert_restock_1788170228224",
+        "type": "PHARMACY_RESTOCKED",
+        "message": "Restocked 10x [Ibuprofen 400mg (20-Pack)] for $35.00",
+        "timestamp": 1788170228224,
+        "severity": "INFO"
+      },
+      {
+        "id": "alert_restock_1788170229165",
+        "type": "PHARMACY_RESTOCKED",
+        "message": "Restocked 10x [Ibuprofen 400mg (20-Pack)] for $35.00",
+        "timestamp": 1788170229165,
+        "severity": "INFO"
+      },
+      {
+        "id": "alert_restock_1788170229333",
+        "type": "PHARMACY_RESTOCKED",
+        "message": "Restocked 10x [Ibuprofen 400mg (20-Pack)] for $35.00",
+        "timestamp": 1788170229333,
+        "severity": "INFO"
+      },
+      {
+        "id": "alert_restock_1788170229513",
+        "type": "PHARMACY_RESTOCKED",
+        "message": "Restocked 10x [Ibuprofen 400mg (20-Pack)] for $35.00",
+        "timestamp": 1788170229513,
+        "severity": "INFO"
+      },
+      {
+        "id": "alert_restock_1788170229736",
+        "type": "PHARMACY_RESTOCKED",
+        "message": "Restocked 10x [Ibuprofen 400mg (20-Pack)] for $35.00",
+        "timestamp": 1788170229736,
+        "severity": "INFO"
+      },
+      {
+        "id": "alert_restock_1788170230115",
+        "type": "PHARMACY_RESTOCKED",
+        "message": "Restocked 10x [Ibuprofen 400mg (20-Pack)] for $35.00",
+        "timestamp": 1788170230115,
+        "severity": "INFO"
+      },
+      {
+        "id": "alert_restock_1788170230502",
+        "type": "PHARMACY_RESTOCKED",
+        "message": "Restocked 10x [Ibuprofen 400mg (20-Pack)] for $35.00",
+        "timestamp": 1788170230502,
+        "severity": "INFO"
+      },
+      {
+        "id": "alert_restock_1788170231258",
+        "type": "PHARMACY_RESTOCKED",
+        "message": "Restocked 10x [Ibuprofen 400mg (20-Pack)] for $35.00",
+        "timestamp": 1788170231258,
+        "severity": "INFO"
+      },
+      {
+        "id": "alert_restock_1788170231459",
+        "type": "PHARMACY_RESTOCKED",
+        "message": "Restocked 10x [Ibuprofen 400mg (20-Pack)] for $35.00",
+        "timestamp": 1788170231459,
+        "severity": "INFO"
+      },
+      {
+        "id": "alert_restock_1788170231659",
+        "type": "PHARMACY_RESTOCKED",
+        "message": "Restocked 10x [Ibuprofen 400mg (20-Pack)] for $35.00",
+        "timestamp": 1788170231659,
+        "severity": "INFO"
+      },
+      {
+        "id": "alert_restock_1788170231878",
+        "type": "PHARMACY_RESTOCKED",
+        "message": "Restocked 10x [Ibuprofen 400mg (20-Pack)] for $35.00",
+        "timestamp": 1788170231878,
+        "severity": "INFO"
+      },
+      {
+        "id": "alert_restock_1788170232244",
+        "type": "PHARMACY_RESTOCKED",
+        "message": "Restocked 10x [Ibuprofen 400mg (20-Pack)] for $35.00",
+        "timestamp": 1788170232244,
+        "severity": "INFO"
+      },
+      {
+        "id": "alert_restock_1788170232613",
+        "type": "PHARMACY_RESTOCKED",
+        "message": "Restocked 10x [Ibuprofen 400mg (20-Pack)] for $35.00",
+        "timestamp": 1788170232613,
+        "severity": "INFO"
+      },
+      {
+        "id": "alert_restock_1788170233023",
+        "type": "PHARMACY_RESTOCKED",
+        "message": "Restocked 10x [Ibuprofen 400mg (20-Pack)] for $35.00",
+        "timestamp": 1788170233023,
+        "severity": "INFO"
+      },
+      {
+        "id": "alert_restock_1788170233240",
+        "type": "PHARMACY_RESTOCKED",
+        "message": "Restocked 10x [Ibuprofen 400mg (20-Pack)] for $35.00",
+        "timestamp": 1788170233240,
+        "severity": "INFO"
+      },
+      {
+        "id": "alert_restock_1788170233653",
+        "type": "PHARMACY_RESTOCKED",
+        "message": "Restocked 10x [Ibuprofen 400mg (20-Pack)] for $35.00",
+        "timestamp": 1788170233653,
+        "severity": "INFO"
+      },
+      {
+        "id": "alert_restock_1788170234045",
+        "type": "PHARMACY_RESTOCKED",
+        "message": "Restocked 10x [Ibuprofen 400mg (20-Pack)] for $35.00",
+        "timestamp": 1788170234045,
+        "severity": "INFO"
+      },
+      {
+        "id": "alert_restock_1788170234407",
+        "type": "PHARMACY_RESTOCKED",
+        "message": "Restocked 10x [Ibuprofen 400mg (20-Pack)] for $35.00",
+        "timestamp": 1788170234407,
+        "severity": "INFO"
+      },
+      {
+        "id": "alert_restock_1788170235498",
+        "type": "PHARMACY_RESTOCKED",
+        "message": "Restocked 10x [Ibuprofen 400mg (20-Pack)] for $35.00",
+        "timestamp": 1788170235498,
+        "severity": "INFO"
+      },
+      {
+        "id": "alert_restock_1788170235700",
+        "type": "PHARMACY_RESTOCKED",
+        "message": "Restocked 10x [Ibuprofen 400mg (20-Pack)] for $35.00",
+        "timestamp": 1788170235700,
+        "severity": "INFO"
+      },
+      {
+        "id": "alert_restock_1788170247258",
+        "type": "PHARMACY_RESTOCKED",
+        "message": "Restocked 10x [Amoxicillin 500mg Capsules] for $85.00",
+        "timestamp": 1788170247258,
+        "severity": "INFO"
+      },
+      {
+        "id": "alert_restock_1788170247493",
+        "type": "PHARMACY_RESTOCKED",
+        "message": "Restocked 10x [Amoxicillin 500mg Capsules] for $85.00",
+        "timestamp": 1788170247493,
+        "severity": "INFO"
+      },
+      {
+        "id": "alert_restock_1788170247879",
+        "type": "PHARMACY_RESTOCKED",
+        "message": "Restocked 10x [Amoxicillin 500mg Capsules] for $85.00",
+        "timestamp": 1788170247879,
+        "severity": "INFO"
+      },
+      {
+        "id": "alert_restock_1788170248907",
+        "type": "PHARMACY_RESTOCKED",
+        "message": "Restocked 10x [Amoxicillin 500mg Capsules] for $85.00",
+        "timestamp": 1788170248907,
+        "severity": "INFO"
+      },
+      {
+        "id": "alert_restock_1788170249287",
+        "type": "PHARMACY_RESTOCKED",
+        "message": "Restocked 10x [Amoxicillin 500mg Capsules] for $85.00",
+        "timestamp": 1788170249287,
+        "severity": "INFO"
+      },
+      {
+        "id": "alert_restock_1788170249698",
+        "type": "PHARMACY_RESTOCKED",
+        "message": "Restocked 10x [Amoxicillin 500mg Capsules] for $85.00",
+        "timestamp": 1788170249698,
+        "severity": "INFO"
+      },
+      {
+        "id": "alert_restock_1788170250104",
+        "type": "PHARMACY_RESTOCKED",
+        "message": "Restocked 10x [Amoxicillin 500mg Capsules] for $85.00",
+        "timestamp": 1788170250104,
+        "severity": "INFO"
+      },
+      {
+        "id": "alert_restock_1788170250316",
+        "type": "PHARMACY_RESTOCKED",
+        "message": "Restocked 10x [Amoxicillin 500mg Capsules] for $85.00",
+        "timestamp": 1788170250316,
+        "severity": "INFO"
+      },
+      {
+        "id": "alert_restock_1788170250707",
+        "type": "PHARMACY_RESTOCKED",
+        "message": "Restocked 10x [Amoxicillin 500mg Capsules] for $85.00",
+        "timestamp": 1788170250707,
+        "severity": "INFO"
+      },
+      {
+        "id": "alert_restock_1788170251514",
+        "type": "PHARMACY_RESTOCKED",
+        "message": "Restocked 10x [Amoxicillin 500mg Capsules] for $85.00",
+        "timestamp": 1788170251514,
+        "severity": "INFO"
+      },
+      {
+        "id": "alert_restock_1788170252119",
+        "type": "PHARMACY_RESTOCKED",
+        "message": "Restocked 10x [Amoxicillin 500mg Capsules] for $85.00",
+        "timestamp": 1788170252119,
+        "severity": "INFO"
+      },
+      {
+        "id": "alert_restock_1788170252468",
+        "type": "PHARMACY_RESTOCKED",
+        "message": "Restocked 10x [Amoxicillin 500mg Capsules] for $85.00",
+        "timestamp": 1788170252468,
+        "severity": "INFO"
+      },
+      {
+        "id": "alert_restock_1788170253483",
+        "type": "PHARMACY_RESTOCKED",
+        "message": "Restocked 10x [Vitamin B-Complex & Zinc Elixir] for $50.00",
+        "timestamp": 1788170253483,
+        "severity": "INFO"
+      },
+      {
+        "id": "alert_restock_1788170253865",
+        "type": "PHARMACY_RESTOCKED",
+        "message": "Restocked 10x [Vitamin B-Complex & Zinc Elixir] for $50.00",
+        "timestamp": 1788170253865,
+        "severity": "INFO"
+      },
+      {
+        "id": "alert_restock_1788170254515",
+        "type": "PHARMACY_RESTOCKED",
+        "message": "Restocked 10x [Vitamin B-Complex & Zinc Elixir] for $50.00",
+        "timestamp": 1788170254515,
+        "severity": "INFO"
+      },
+      {
+        "id": "alert_restock_1788170254721",
+        "type": "PHARMACY_RESTOCKED",
+        "message": "Restocked 10x [Vitamin B-Complex & Zinc Elixir] for $50.00",
+        "timestamp": 1788170254721,
+        "severity": "INFO"
+      },
+      {
+        "id": "alert_restock_1788170254931",
+        "type": "PHARMACY_RESTOCKED",
+        "message": "Restocked 10x [Vitamin B-Complex & Zinc Elixir] for $50.00",
+        "timestamp": 1788170254931,
+        "severity": "INFO"
+      },
+      {
+        "id": "alert_restock_1788170255352",
+        "type": "PHARMACY_RESTOCKED",
+        "message": "Restocked 10x [Vitamin B-Complex & Zinc Elixir] for $50.00",
+        "timestamp": 1788170255352,
+        "severity": "INFO"
+      },
+      {
+        "id": "alert_restock_1788170255687",
+        "type": "PHARMACY_RESTOCKED",
+        "message": "Restocked 10x [Vitamin B-Complex & Zinc Elixir] for $50.00",
+        "timestamp": 1788170255687,
+        "severity": "INFO"
+      },
+      {
+        "id": "alert_restock_1788170256101",
+        "type": "PHARMACY_RESTOCKED",
+        "message": "Restocked 10x [Vitamin B-Complex & Zinc Elixir] for $50.00",
+        "timestamp": 1788170256101,
+        "severity": "INFO"
+      },
+      {
+        "id": "alert_restock_1788170256375",
+        "type": "PHARMACY_RESTOCKED",
+        "message": "Restocked 10x [Vitamin B-Complex & Zinc Elixir] for $50.00",
+        "timestamp": 1788170256375,
+        "severity": "INFO"
+      },
+      {
+        "id": "alert_restock_1788170257180",
+        "type": "PHARMACY_RESTOCKED",
+        "message": "Restocked 10x [Vitamin B-Complex & Zinc Elixir] for $50.00",
+        "timestamp": 1788170257180,
+        "severity": "INFO"
+      },
+      {
+        "id": "alert_restock_1788170257338",
+        "type": "PHARMACY_RESTOCKED",
+        "message": "Restocked 10x [Vitamin B-Complex & Zinc Elixir] for $50.00",
+        "timestamp": 1788170257338,
+        "severity": "INFO"
+      },
+      {
+        "id": "alert_restock_1788170258141",
+        "type": "PHARMACY_RESTOCKED",
+        "message": "Restocked 10x [Vitamin B-Complex & Zinc Elixir] for $50.00",
+        "timestamp": 1788170258141,
+        "severity": "INFO"
+      },
+      {
+        "id": "alert_restock_1788170258515",
+        "type": "PHARMACY_RESTOCKED",
+        "message": "Restocked 10x [Vitamin B-Complex & Zinc Elixir] for $50.00",
+        "timestamp": 1788170258515,
+        "severity": "INFO"
+      },
+      {
+        "id": "alert_restock_1788170259129",
+        "type": "PHARMACY_RESTOCKED",
+        "message": "Restocked 10x [Emergency Surgical Dressing & Antiseptic] for $60.00",
+        "timestamp": 1788170259129,
+        "severity": "INFO"
+      },
+      {
+        "id": "alert_restock_1788170259517",
+        "type": "PHARMACY_RESTOCKED",
+        "message": "Restocked 10x [Emergency Surgical Dressing & Antiseptic] for $60.00",
+        "timestamp": 1788170259517,
+        "severity": "INFO"
+      },
+      {
+        "id": "alert_restock_1788170261061",
+        "type": "PHARMACY_RESTOCKED",
+        "message": "Restocked 10x [Emergency Surgical Dressing & Antiseptic] for $60.00",
+        "timestamp": 1788170261061,
+        "severity": "INFO"
+      },
+      {
+        "id": "alert_restock_1788170261325",
+        "type": "PHARMACY_RESTOCKED",
+        "message": "Restocked 10x [Emergency Surgical Dressing & Antiseptic] for $60.00",
+        "timestamp": 1788170261325,
+        "severity": "INFO"
+      },
+      {
+        "id": "alert_restock_1788170261746",
+        "type": "PHARMACY_RESTOCKED",
+        "message": "Restocked 10x [Emergency Surgical Dressing & Antiseptic] for $60.00",
+        "timestamp": 1788170261746,
+        "severity": "INFO"
+      },
+      {
+        "id": "alert_restock_1788170261964",
+        "type": "PHARMACY_RESTOCKED",
+        "message": "Restocked 10x [Emergency Surgical Dressing & Antiseptic] for $60.00",
+        "timestamp": 1788170261964,
+        "severity": "INFO"
+      },
+      {
+        "id": "alert_restock_1788170262375",
+        "type": "PHARMACY_RESTOCKED",
+        "message": "Restocked 10x [Emergency Surgical Dressing & Antiseptic] for $60.00",
+        "timestamp": 1788170262375,
+        "severity": "INFO"
+      },
+      {
+        "id": "alert_restock_1788170262802",
+        "type": "PHARMACY_RESTOCKED",
+        "message": "Restocked 10x [Emergency Surgical Dressing & Antiseptic] for $60.00",
+        "timestamp": 1788170262802,
+        "severity": "INFO"
+      },
+      {
+        "id": "alert_restock_1788170263024",
+        "type": "PHARMACY_RESTOCKED",
+        "message": "Restocked 10x [Emergency Surgical Dressing & Antiseptic] for $60.00",
+        "timestamp": 1788170263024,
+        "severity": "INFO"
+      },
+      {
+        "id": "alert_restock_1788170263465",
+        "type": "PHARMACY_RESTOCKED",
+        "message": "Restocked 10x [Emergency Surgical Dressing & Antiseptic] for $60.00",
+        "timestamp": 1788170263465,
+        "severity": "INFO"
+      },
+      {
+        "id": "alert_restock_1788170264148",
+        "type": "PHARMACY_RESTOCKED",
+        "message": "Restocked 10x [Emergency Surgical Dressing & Antiseptic] for $60.00",
+        "timestamp": 1788170264148,
+        "severity": "INFO"
+      },
+      {
+        "id": "alert_restock_1788170264597",
+        "type": "PHARMACY_RESTOCKED",
+        "message": "Restocked 10x [Emergency Surgical Dressing & Antiseptic] for $60.00",
+        "timestamp": 1788170264597,
+        "severity": "INFO"
+      },
+      {
+        "id": "alert_restock_1788170264799",
+        "type": "PHARMACY_RESTOCKED",
+        "message": "Restocked 10x [Emergency Surgical Dressing & Antiseptic] for $60.00",
+        "timestamp": 1788170264799,
+        "severity": "INFO"
+      },
+      {
+        "id": "alert_restock_1788170265270",
+        "type": "PHARMACY_RESTOCKED",
+        "message": "Restocked 10x [Emergency Surgical Dressing & Antiseptic] for $60.00",
+        "timestamp": 1788170265270,
+        "severity": "INFO"
+      },
+      {
+        "id": "alert_restock_1788170265468",
+        "type": "PHARMACY_RESTOCKED",
+        "message": "Restocked 10x [Emergency Surgical Dressing & Antiseptic] for $60.00",
+        "timestamp": 1788170265468,
+        "severity": "INFO"
+      },
+      {
+        "id": "alert_restock_1788170265946",
+        "type": "PHARMACY_RESTOCKED",
+        "message": "Restocked 10x [Emergency Surgical Dressing & Antiseptic] for $60.00",
+        "timestamp": 1788170265946,
+        "severity": "INFO"
+      },
+      {
+        "id": "alert_restock_1788170266330",
+        "type": "PHARMACY_RESTOCKED",
+        "message": "Restocked 10x [Emergency Surgical Dressing & Antiseptic] for $60.00",
+        "timestamp": 1788170266330,
+        "severity": "INFO"
+      },
+      {
+        "id": "alert_restock_1788170266532",
+        "type": "PHARMACY_RESTOCKED",
+        "message": "Restocked 10x [Emergency Surgical Dressing & Antiseptic] for $60.00",
+        "timestamp": 1788170266532,
+        "severity": "INFO"
+      },
+      {
+        "id": "alert_restock_1788170266732",
+        "type": "PHARMACY_RESTOCKED",
+        "message": "Restocked 10x [Emergency Surgical Dressing & Antiseptic] for $60.00",
+        "timestamp": 1788170266732,
+        "severity": "INFO"
+      },
+      {
+        "id": "alert_restock_1788170266905",
+        "type": "PHARMACY_RESTOCKED",
+        "message": "Restocked 10x [Emergency Surgical Dressing & Antiseptic] for $60.00",
+        "timestamp": 1788170266905,
+        "severity": "INFO"
+      },
+      {
+        "id": "alert_restock_1788170267089",
+        "type": "PHARMACY_RESTOCKED",
+        "message": "Restocked 10x [Emergency Surgical Dressing & Antiseptic] for $60.00",
+        "timestamp": 1788170267089,
+        "severity": "INFO"
+      },
+      {
+        "id": "alert_restock_1788170267814",
+        "type": "PHARMACY_RESTOCKED",
+        "message": "Restocked 10x [Vitamin B-Complex & Zinc Elixir] for $50.00",
+        "timestamp": 1788170267814,
+        "severity": "INFO"
+      },
+      {
+        "id": "alert_restock_1788170267999",
+        "type": "PHARMACY_RESTOCKED",
+        "message": "Restocked 10x [Vitamin B-Complex & Zinc Elixir] for $50.00",
+        "timestamp": 1788170267999,
+        "severity": "INFO"
+      },
+      {
+        "id": "alert_restock_1788170268422",
+        "type": "PHARMACY_RESTOCKED",
+        "message": "Restocked 10x [Vitamin B-Complex & Zinc Elixir] for $50.00",
+        "timestamp": 1788170268422,
+        "severity": "INFO"
+      },
+      {
+        "id": "alert_restock_1788170268822",
+        "type": "PHARMACY_RESTOCKED",
+        "message": "Restocked 10x [Vitamin B-Complex & Zinc Elixir] for $50.00",
+        "timestamp": 1788170268822,
+        "severity": "INFO"
+      },
+      {
+        "id": "alert_restock_1788170269035",
+        "type": "PHARMACY_RESTOCKED",
+        "message": "Restocked 10x [Vitamin B-Complex & Zinc Elixir] for $50.00",
+        "timestamp": 1788170269035,
+        "severity": "INFO"
+      },
+      {
+        "id": "alert_restock_1788170269445",
+        "type": "PHARMACY_RESTOCKED",
+        "message": "Restocked 10x [Vitamin B-Complex & Zinc Elixir] for $50.00",
+        "timestamp": 1788170269445,
+        "severity": "INFO"
+      },
+      {
+        "id": "alert_restock_1788170269862",
+        "type": "PHARMACY_RESTOCKED",
+        "message": "Restocked 10x [Vitamin B-Complex & Zinc Elixir] for $50.00",
+        "timestamp": 1788170269862,
+        "severity": "INFO"
+      },
+      {
+        "id": "alert_restock_1788170270221",
+        "type": "PHARMACY_RESTOCKED",
+        "message": "Restocked 10x [Vitamin B-Complex & Zinc Elixir] for $50.00",
+        "timestamp": 1788170270221,
+        "severity": "INFO"
+      },
+      {
+        "id": "alert_restock_1788170270855",
+        "type": "PHARMACY_RESTOCKED",
+        "message": "Restocked 10x [Amoxicillin 500mg Capsules] for $85.00",
+        "timestamp": 1788170270855,
+        "severity": "INFO"
+      },
+      {
+        "id": "alert_restock_1788170271209",
+        "type": "PHARMACY_RESTOCKED",
+        "message": "Restocked 10x [Amoxicillin 500mg Capsules] for $85.00",
+        "timestamp": 1788170271209,
+        "severity": "INFO"
+      },
+      {
+        "id": "alert_restock_1788170271379",
+        "type": "PHARMACY_RESTOCKED",
+        "message": "Restocked 10x [Amoxicillin 500mg Capsules] for $85.00",
+        "timestamp": 1788170271379,
+        "severity": "INFO"
+      },
+      {
+        "id": "alert_restock_1788170271599",
+        "type": "PHARMACY_RESTOCKED",
+        "message": "Restocked 10x [Amoxicillin 500mg Capsules] for $85.00",
+        "timestamp": 1788170271599,
+        "severity": "INFO"
+      },
+      {
+        "id": "alert_restock_1788170272424",
+        "type": "PHARMACY_RESTOCKED",
+        "message": "Restocked 10x [Ibuprofen 400mg (20-Pack)] for $35.00",
+        "timestamp": 1788170272424,
+        "severity": "INFO"
+      },
+      {
+        "id": "alert_restock_1788170272613",
+        "type": "PHARMACY_RESTOCKED",
+        "message": "Restocked 10x [Ibuprofen 400mg (20-Pack)] for $35.00",
+        "timestamp": 1788170272613,
+        "severity": "INFO"
+      },
+      {
+        "id": "alert_restock_1788170273023",
+        "type": "PHARMACY_RESTOCKED",
+        "message": "Restocked 10x [Ibuprofen 400mg (20-Pack)] for $35.00",
+        "timestamp": 1788170273023,
+        "severity": "INFO"
+      },
+      {
+        "id": "alert_restock_1788170273451",
+        "type": "PHARMACY_RESTOCKED",
+        "message": "Restocked 10x [Ibuprofen 400mg (20-Pack)] for $35.00",
+        "timestamp": 1788170273451,
+        "severity": "INFO"
+      },
+      {
+        "id": "alert_restock_1788170273649",
+        "type": "PHARMACY_RESTOCKED",
+        "message": "Restocked 10x [Ibuprofen 400mg (20-Pack)] for $35.00",
+        "timestamp": 1788170273649,
+        "severity": "INFO"
+      },
+      {
+        "id": "alert_restock_1788170274068",
+        "type": "PHARMACY_RESTOCKED",
+        "message": "Restocked 10x [Ibuprofen 400mg (20-Pack)] for $35.00",
+        "timestamp": 1788170274068,
+        "severity": "INFO"
+      }
+    ]
+  }
+}

@@ -20,6 +20,8 @@ declare global {
 // State cache
 let currentState: any = null;
 let currentTorStatus: any = null;
+let operativeFilter: 'ALL' | 'BENJAMIN' | 'ELIAS' | 'UNASSIGNED' = 'ALL';
+let operativeSort: 'DEFAULT' | 'TIER' | 'EFFICIENCY' = 'DEFAULT';
 
 // DOM references
 const valOperator = document.getElementById('val-operator')!;
@@ -122,30 +124,65 @@ function updateUI(state: any): void {
   }
 
   // 3. Operatives
-  const workers = Object.values(state.workers);
+  let workers = Object.values(state.workers);
+
+  // Filter
+  if (operativeFilter === 'BENJAMIN') {
+    workers = workers.filter((w: any) => w.role === 'BENJAMIN');
+  } else if (operativeFilter === 'ELIAS') {
+    workers = workers.filter((w: any) => w.role === 'ELIAS');
+  } else if (operativeFilter === 'UNASSIGNED') {
+    workers = workers.filter((w: any) => !w.assignedNodeId);
+  }
+
+  // Sort
+  if (operativeSort === 'TIER') {
+    workers.sort((a: any, b: any) => b.tier - a.tier);
+  } else if (operativeSort === 'EFFICIENCY') {
+    workers.sort((a: any, b: any) => b.efficiency - a.efficiency);
+  }
+
+  const nodes = Object.values(state.nodes);
+
   if (workers.length === 0) {
-    operativesList.innerHTML = '<div class="empty-state">No active operatives deployed.</div>';
+    operativesList.innerHTML = '<div class="empty-state">No matching operatives found.</div>';
   } else {
-    operativesList.innerHTML = workers.map((w: any) => `
-      <div class="item-card">
-        <div class="item-card-header">
-          <span class="${w.role === 'BENJAMIN' ? 'badge-benjamin' : 'badge-elias'}">${w.codename} (${w.role})</span>
-          <span>Tier ${w.tier}</span>
+    operativesList.innerHTML = workers.map((w: any) => {
+      // Build hub assignment options
+      const nodeOptions = [
+        `<option value="UNASSIGNED" ${!w.assignedNodeId ? 'selected' : ''}>[UNASSIGNED RESERVE]</option>`,
+        ...nodes.map((n: any) => {
+          const count = Object.values(state.workers).filter((other: any) => other.assignedNodeId === n.id).length;
+          return `<option value="${n.id}" ${w.assignedNodeId === n.id ? 'selected' : ''}>${n.name} (${count}/${n.workerCapacity})</option>`;
+        })
+      ].join('');
+
+      return `
+        <div class="item-card">
+          <div class="item-card-header">
+            <span class="${w.role === 'BENJAMIN' ? 'badge-benjamin' : 'badge-elias'}">${w.codename} (${w.role})</span>
+            <span>Tier ${w.tier}</span>
+          </div>
+          <div style="display: flex; justify-content: space-between; font-size: 11px; margin: 4px 0;">
+            <span>Upkeep: ${formatCurrency(w.salaryPerMinuteCents)}/m</span>
+            <span>Durability: ${(w.durability * 100).toFixed(0)}%</span>
+          </div>
+          <div style="display: flex; align-items: center; justify-content: space-between; gap: 4px; margin: 4px 0;">
+            <span style="font-size: 10px; color: #88cc88;">Station:</span>
+            <select class="btn" style="padding: 2px 4px; font-size: 10px; flex: 1;" onchange="reassignWorker('${w.id}', this.value)">
+              ${nodeOptions}
+            </select>
+          </div>
+          <div style="display: flex; gap: 4px; justify-content: flex-end; margin-top: 4px;">
+            <button class="btn btn-secondary" style="padding: 2px 8px; font-size: 10px;" onclick="promoteWorker('${w.id}')">Promote (Tier ${w.tier + 1})</button>
+            <button class="btn btn-danger" style="padding: 2px 8px; font-size: 10px;" onclick="fireWorker('${w.id}')">Fire</button>
+          </div>
         </div>
-        <div style="display: flex; justify-content: space-between; font-size: 11px; margin: 4px 0;">
-          <span>Upkeep: ${formatCurrency(w.salaryPerMinuteCents)}/m</span>
-          <span>Durability: ${(w.durability * 100).toFixed(0)}%</span>
-        </div>
-        <div style="display: flex; gap: 6px; justify-content: flex-end; margin-top: 4px;">
-          <button class="btn btn-secondary" style="padding: 2px 8px; font-size: 10px;" onclick="promoteWorker('${w.id}')">Promote (Tier ${w.tier + 1})</button>
-          <button class="btn btn-danger" style="padding: 2px 8px; font-size: 10px;" onclick="fireWorker('${w.id}')">Fire</button>
-        </div>
-      </div>
-    `).join('');
+      `;
+    }).join('');
   }
 
   // 4. Real Estate Nodes
-  const nodes = Object.values(state.nodes);
   nodesList.innerHTML = nodes.map((n: any) => `
     <div class="item-card">
       <div class="item-card-header">
@@ -272,6 +309,23 @@ function updateTorUI(info: any): void {
 }
 
 // Global action bridges for inline onclicks
+(window as any).reassignWorker = (workerId: string, nodeId: string) => {
+  const targetNodeId = nodeId === 'UNASSIGNED' ? null : nodeId;
+  window.api.dispatch({ type: 'ASSIGN_WORKER', workerId, nodeId: targetNodeId });
+  logMessage(`Reassigned operative [${workerId}] -> ${targetNodeId || 'Reserve Pool'}`);
+};
+
+(window as any).setOperativeFilter = (filter: 'ALL' | 'BENJAMIN' | 'ELIAS' | 'UNASSIGNED') => {
+  operativeFilter = filter;
+  if (currentState) updateUI(currentState);
+};
+
+(window as any).toggleOperativeSort = () => {
+  operativeSort = operativeSort === 'DEFAULT' ? 'TIER' : operativeSort === 'TIER' ? 'EFFICIENCY' : 'DEFAULT';
+  logMessage(`Sorted operative roster by: ${operativeSort}`);
+  if (currentState) updateUI(currentState);
+};
+
 (window as any).buyInvestment = (itemId: string) => {
   window.api.dispatch({ type: 'PURCHASE_INVESTMENT', itemId });
   logMessage(`Acquired wishlist asset/venture [${itemId}]`);

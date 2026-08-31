@@ -69,6 +69,13 @@
           <button id="btn-recruit-benjamin" class="btn btn-primary">+ Recruit Benjamin ($50/m)</button>
           <button id="btn-recruit-elias" class="btn btn-secondary">+ Recruit Elias ($35/m)</button>
         </div>
+        <div class="filter-toolbar" style="display: flex; gap: 4px; margin-bottom: 6px; font-size: 10px;">
+          <button class="btn" style="padding: 2px 6px;" onclick="setOperativeFilter('ALL')">All</button>
+          <button class="btn" style="padding: 2px 6px;" onclick="setOperativeFilter('BENJAMIN')">Benjamins</button>
+          <button class="btn" style="padding: 2px 6px;" onclick="setOperativeFilter('ELIAS')">Eliases</button>
+          <button class="btn" style="padding: 2px 6px;" onclick="setOperativeFilter('UNASSIGNED')">Reserve</button>
+          <button class="btn" style="padding: 2px 6px; margin-left: auto;" onclick="toggleOperativeSort()">Sort: Tier</button>
+        </div>
         <div id="operatives-list" class="operatives-container">
           <div class="empty-state">No active operatives deployed.</div>
         </div>
