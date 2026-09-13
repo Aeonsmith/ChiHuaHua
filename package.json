@@ -1,6 +1,6 @@
 {
   "name": "blockbuster-underground",
-  "version": "2.0.2000",
+  "version": "2.1.0",
   "description": "Blockbuster: Underground 2.0 (Year 2000 Edition) - Retro Analog Simulation Engine",
   "main": "dist/index.js",
   "scripts": {
