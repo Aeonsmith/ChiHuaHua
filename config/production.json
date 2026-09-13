@@ -1,0 +1,18 @@
+{
+  "environment": "production",
+  "deployedAt": "2026-09-13T19:09:01.336Z",
+  "version": "2.0.2000",
+  "security": {
+    "contextIsolation": true,
+    "nodeIntegration": false,
+    "sandbox": true,
+    "socks5Proxy": "localhost:9050",
+    "strictOnionValidation": true,
+    "twoPersonIntegrity": true
+  },
+  "paths": {
+    "auditLedger": "data/audit_ledger.json",
+    "saveState": "save_game.json",
+    "sqliteDb": "data/state.sqlite"
+  }
+}
