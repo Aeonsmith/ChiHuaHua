@@ -10,7 +10,8 @@
     "ui": "tsx src/cli.ts",
     "desktop": "npm run build && electron dist/desktop/main.js",
     "test": "tsx --test tests/**/*.test.ts",
-    "typecheck": "tsc --noEmit"
+    "typecheck": "tsc --noEmit",
+    "deploy": "node scripts/deploy.js"
   },
   "keywords": [
     "simulation",
