@@ -48,9 +48,15 @@
   - Big Red Nuke button instantly incinerates all surveillance logs, wipes legal heat down to 0%, and resets seed capital.
 
 - **Tor Onion Network Client (`src/network/`):**
-  - Automated SOCKS5 proxy handshake (`127.0.0.1:9050` / `9150`).
+  - Automated SOCKS5 proxy handshake (`*********:9050` / `9150`).
   - Tor v3 `.onion` (56-character base32) domain validation.
   - Live circuit latency diagnostics displayed on the cockpit HUD.
+
+- **Cleaned Notes & Search Engine Vault (`Blockbuster_Underground_Cleaned_Notes/`):**
+  - **Multi-Scope Search:** Filter across `All`, `🏷️ Tags`, and `📄 Content` with multi-token space-separated parsing.
+  - **Tag Prefix Indexing:** `#tag` routing and interactive clickable tag pills on all note cards.
+  - **Pre-Loaded Analytical Notes:** Bi-Polar Bear regime dynamics, Three Bells protocol, Ford Bronco 6-generation compendium with section jumper, Me Myself & ISO sovereign capital architecture, and ChiHuaHua micro-cap velocity.
+  - **Zero-Telemetry Scrubbing:** Strips tracking parameters, EXIF markers, and metadata prior to encrypted SQLite persistence.
 
 ---
 
@@ -58,6 +64,11 @@
 
 ```
 blockbuster-underground/
+├── Blockbuster_Underground_Cleaned_Notes/  # Cleaned Notes Vault & Search Engine
+│   ├── app.py                             # Python SQLite server & Tor bridge
+│   ├── index.html                         # Terminal cockpit UI with multi-scope search
+│   ├── data.db                            # Encrypted note database
+│   └── README.md                          # Notes module documentation
 ├── src/
 │   ├── desktop/               # Electron desktop GUI
 │   │   ├── main.ts            # Main process lifecycle & IPC bridges

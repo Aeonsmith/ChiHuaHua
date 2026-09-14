@@ -1,7 +1,7 @@
 {
   "environment": "production",
-  "deployedAt": "2026-09-13T19:09:01.336Z",
-  "version": "2.0.2000",
+  "deployedAt": "2026-09-13T20:44:51.781Z",
+  "version": "2.1.0",
   "security": {
     "contextIsolation": true,
     "nodeIntegration": false,
