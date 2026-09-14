@@ -25,7 +25,8 @@ if (-not $SkipTests) {
     npm test
     if ($LASTEXITCODE -ne 0) { throw "Test suite failed." }
     Write-Host "✓ All test suites passed." -ForegroundColor Green
-} else {
+}
+else {
     Write-Host "`n>> [2/4] Skipping tests (-SkipTests specified)." -ForegroundColor DarkGray
 }
 
@@ -36,7 +37,7 @@ if ($LASTEXITCODE -ne 0) { throw "Production build failed." }
 Write-Host "✓ Build completed." -ForegroundColor Green
 
 # 4. Generate Production Config and Release Manifest
-Write-Host "`n>> [4/4] Generating Release Configuration & Manifest..." -ForegroundColor Yellow
+Write-Host "`n>> [4/4] Generating Release Configuration and Manifest..." -ForegroundColor Yellow
 node scripts/deploy.js
 if ($LASTEXITCODE -ne 0) { throw "Deployment manifest generation failed." }
 
