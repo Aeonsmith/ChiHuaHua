@@ -10,8 +10,15 @@ from http.server import HTTPServer, SimpleHTTPRequestHandler
 import threading
 import webbrowser
 
-APP_DIR = os.path.dirname(os.path.abspath(__file__))
-DB_PATH = os.path.join(APP_DIR, "data.db")
+if getattr(sys, 'frozen', False):
+    EXE_DIR = os.path.dirname(sys.executable)
+    BUNDLE_DIR = getattr(sys, '_MEIPASS', EXE_DIR)
+else:
+    EXE_DIR = os.path.dirname(os.path.abspath(__file__))
+    BUNDLE_DIR = EXE_DIR
+
+APP_DIR = BUNDLE_DIR
+DB_PATH = os.path.join(EXE_DIR, "data.db")
 PORT = 7890
 
 def init_db():
@@ -146,7 +153,7 @@ Analysis of the Ford Bronco franchise revitalization as a model for heritage bra
 def check_tor_port(host, port):
     try:
         s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-        s.settimeout(1.5)
+        s.settimeout(0.2)
         res = s.connect_ex((host, port))
         s.close()
         return res == 0
